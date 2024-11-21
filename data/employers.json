@@ -1,0 +1,138 @@
+[
+  {
+    "empid": "bb",
+    "name": "Bloomberg",
+    "abbreviation": "",
+    "phone": "+1-212-318-2000",
+    "url": "http://bloomberg.com",
+    "address": "731 Lexington Ave, New York, NY 10022"
+  },
+  {
+    "empid": "gtri",
+    "name": "Georgia Tech Research Institute",
+    "abbreviation": "GTRI",
+    "phone": "+1-404-894-7325",
+    "url": "http://gtri.gatech.edu",
+    "address": "400 10th St NW, Atlanta, GA 30318"
+  },
+  {
+    "empid": "alu",
+    "name": "Alcatel-Lucent",
+    "abbreviation": "",
+    "phone": "+1-770-750-2339",
+    "url": "http://alcatel-lucent.com",
+    "address": "800 North Pointe Pkwy, Alpharetta, GA 30005"
+  },
+  {
+    "empid": "att",
+    "name": "AT&T",
+    "abbreviation": "",
+    "phone": " +1-800-331-0500",
+    "url": "http://att.com",
+    "address": " 725 W Peachtree St NW, Atlanta, GA  30308"
+  },
+  {
+    "empid": "agile",
+    "name": "Agile Technologies",
+    "abbreviation": "Agile",
+    "phone": "+1-678-579-9068",
+    "url": "http://www.agiletech.com",
+    "address": "400 Perimeter Center Terrace Ste 145, Atlanta, GA 30346"
+  },
+  {
+    "empid": "ng",
+    "name": "NextGen Healthcare Information Systems",
+    "abbreviation": "NextGen",
+    "phone": "+1-404-467-1500",
+    "url": "http://nextgen.com",
+    "address": "3340 Peachtree Road NE, Suite 2700, Atlanta, GA 30326"
+  },
+  {
+    "empid": "rfs",
+    "name": "taxslayer.com",
+    "abbreviation": "",
+    "phone": "+1-706-868-2333",
+    "url": "http://taxslayer.com",
+    "address": "3003 TaxSlayer Drive, Evans, GA 30809"
+  },
+  {
+    "empid": "ipswitch",
+    "name": "Ipswitch",
+    "abbreviation": "",
+    "phone": "+1-781-676-5700",
+    "url": "http://ipswitch.com",
+    "address": "83 Hartwell Ave, Lexington, MA 02421 (US HQ)"
+  },
+  {
+    "empid": "gwi",
+    "name": "Asymetrix",
+    "abbreviation": "",
+    "phone": "",
+    "url": "http://www.asymetrix.com",
+    "address": ""
+  },
+  {
+    "empid": "tq",
+    "name": "Transquest",
+    "abbreviation": "",
+    "phone": "",
+    "url": "http://delta.com",
+    "address": "1030 Delta Blvd, Dept 982, Atlanta, GA, 30354"
+  },
+  {
+    "empid": "frb",
+    "name": "The Federal Reserve Bank of Atlanta",
+    "abbreviation": "The Fed",
+    "phone": "+1-404-498-8500",
+    "url": "https://frbatlanta.org",
+    "address": "1000 Peachtree St NE, Atlanta, GA  30309 (since 2001)"
+  },
+  {
+    "empid": "nova",
+    "name": "Nova Information Systems",
+    "abbreviation": "Nova",
+    "phone": "+1-678-731-5000",
+    "url": "http://elavon.com",
+    "address": "Two Concourse Parkway, Suite 800, Atlanta, GA 30328"
+  },
+  {
+    "empid": "hvl",
+    "name": "Hypermedia and Visualization Laboratory",
+    "abbreviation": "The HVL",
+    "phone": "+1-404-651-2245",
+    "url": "http://hvl.cs.gsu.edu/hvl/ ",
+    "address": "Georgia State University, Atlanta, GA  30303"
+  },
+  {
+    "empid": "gap",
+    "name": "The Georgia Assessment Project",
+    "abbreviation": "GAP",
+    "phone": "+1-404-651-2245",
+    "url": "-",
+    "address": "Georgia State University, Atlanta, GA  30303"
+  },
+  {
+    "empid": "apex",
+    "name": "Apex Systems Inc",
+    "abbreviation": "Apex",
+    "phone": "",
+    "url": "http://apexsystems.com",
+    "address": ""
+  },
+  {
+    "empid": "chemtech",
+    "name": "Chemtech",
+    "abbreviation": "",
+    "phone": "",
+    "url": "http://crystalequation.com",
+    "address": ""
+  },
+  {
+    "empid": "teltech",
+    "name": "TelTech",
+    "abbreviation": "",
+    "phone": "",
+    "url": "http://www.segulatechnologies.com",
+    "address": ""
+  }
+]

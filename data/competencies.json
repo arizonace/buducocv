@@ -1,0 +1,134 @@
+[
+  {
+    "skill": "C++",
+    "web_order": "4",
+    "doc_order": "1",
+    "Star": "8",
+    "Years": "10",
+    "caption": "STL, ATL, MFC, also: FCL, C++/CLI, etc.",
+    "Sub Skills/Keywords": "ATL, MFC, STL, C++/CLI",
+    "Max11": "\"'0,7,8,8,9,9,9,9,9,10,10,10,10,0,0,0,0,9,0,0,0,0,0,11,11,11,11\"",
+    "Max7": "\"1,3,4,4,5,5,5,5,5,6,6,6,6,0,0,0,0,5,1,1,1,1,1,7,7,7,7\""
+  },
+  {
+    "skill": "DotNet",
+    "web_order": "5",
+    "doc_order": "2",
+    "Star": "7",
+    "Years": "8",
+    "caption": "Web and desktop using C#, VB.Net,  C++/CLI",
+    "Sub Skills/Keywords": "C#, ASP.Net, VB.Net, C++/CLI.",
+    "Max11": "\"'0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,0,9,9,9,9,9,9,0,0,0\"",
+    "Max7": "\"'0,0,0,0,0,0,0,0,0,1,1,1,1,5,5,5,5,0,5,5,5,5,5,5,1,1,1\""
+  },
+  {
+    "skill": "Python",
+    "web_order": "6",
+    "doc_order": "3",
+    "Star": "5",
+    "Years": "2",
+    "caption": "DotNet Interop, multiprocessing, Robot Testing, etc.",
+    "Sub Skills/Keywords": "PEP-008 compliant. Robot",
+    "Max11": "\"null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,7,9,9,9\"",
+    "Max7": "\",,,,,,,,,,,,,,,,,,,,,,,3,5,5,5\""
+  },
+  {
+    "skill": "Java",
+    "web_order": "7",
+    "doc_order": "4",
+    "Star": "5",
+    "Years": "3",
+    "caption": "Android, JNI, Web-Applets, Tomcat",
+    "Sub Skills/Keywords": "Android, JNI, Web-Applets, Tomcat (spanning 20 years)",
+    "Max11": "\"'0,0,0,0,0,0,0,7,7,0,0,0,0,0,0,0,0,0,0,0,7,7,7,0,0,0,0\"",
+    "Max7": "\"'0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,1,1,3,3,3,0,1,1,1\""
+  },
+  {
+    "skill": "Fortran",
+    "web_order": "8",
+    "doc_order": "5",
+    "Star": "3",
+    "Years": "1",
+    "caption": "Financial software maintenance",
+    "Sub Skills/Keywords": "Bloomberg Terminal",
+    "Max11": "\"null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,7,7,7\"",
+    "Max7": "\",,,,,,,,,,,,,,,,,,,,,,,,3,3,3\""
+  },
+  {
+    "skill": "PHP",
+    "web_order": "9",
+    "doc_order": "6",
+    "Star": "3",
+    "Years": "1",
+    "caption": "Website maintenance, basic sites",
+    "Sub Skills/Keywords": "RFCs, FTP, SSL/TLS, SSH.",
+    "Max11": "\"null,null,null,null,null,null,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\"",
+    "Max7": "\",,,,,,,,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\""
+  },
+  {
+    "skill": "Databases",
+    "web_order": "10",
+    "doc_order": "7",
+    "Star": "7",
+    "Years": "15",
+    "caption": "Design, DDL, data access, SQL, etc.",
+    "Sub Skills/Keywords": "SQL, Sql Server, T-SQL, Oracle, PL-SQL, MySql, SqlLite, Paradox, etc.",
+    "Max11": "\"9,0,9,9,11,9,0,0,0,0,0,0,0,9,9,11,9,0,9,9,9,9,9,0,9,9,9\"",
+    "Max7": "\"5,1,5,5,7,5,2,2,2,2,2,2,2,5,5,7,5,0,5,5,5,5,5,0,5,5,5\""
+  },
+  {
+    "skill": "IPTV",
+    "web_order": "11",
+    "doc_order": "8",
+    "Star": "5",
+    "Years": "5",
+    "caption": "VHO Integration, set-top-box, over-the-top, etc.",
+    "Sub Skills/Keywords": "Mediaroom, VHO, set-top-box, H.264, QuickPlay, over-the-top",
+    "Max11": "\"null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,9,9,9,9,9,0,0,0,0\"",
+    "Max7": "\",,,,,,,,,,,,,,,,,,5,5,5,5,5,,,,\""
+  },
+  {
+    "skill": "TCP/IP",
+    "web_order": "12",
+    "doc_order": "9",
+    "Star": "5",
+    "Years": "5",
+    "caption": "SSH, SSL/TLS; WS_FTP - fastest FTP client at the time",
+    "Sub Skills/Keywords": "RFCs, FTP, SSL/TLS, SSH",
+    "Max11": "\"'0,0,0,0,0,0,7,0,0,9,9,11,11,0,0,0,0,0,0,0,0,0,0,8,0,0,0\"",
+    "Max7": "\"'0,0,0,0,1,1,3,1,1,5,5,7,7,1,1,1,1,2,2,2,2,2,2,4,0,0,0\""
+  },
+  {
+    "skill": "Windows",
+    "web_order": "1",
+    "doc_order": "10",
+    "Star": "8",
+    "Years": "26",
+    "caption": "Since Windows 3.0, Internals, GDI, COM, etc.",
+    "Sub Skills/Keywords": "Internals, SDK, GUI, GDI, COM, I18N, shell integration, etc.",
+    "Max11": "\"8,9,9,9,9,9,9,10,10,11,11,11,11,9,9,9,9,10,9,9,11,11,11,9,0,0,0\"",
+    "Max7": "\"4,5,5,5,5,5,5,6,6,7,7,7,7,5,5,5,5,6,5,5,7,7,7,5,2,2,2\""
+  },
+  {
+    "skill": "Web",
+    "web_order": "2",
+    "doc_order": "11",
+    "Star": "7",
+    "Years": "10",
+    "caption": "ASP.Net, HTML, JavaScript, CSS, JSP etc.",
+    "Sub Skills/Keywords": "ASP.Net, HTML, CSS, XML, XSLT, JavaScript, Java, AJAX, etc.",
+    "Max11": "\"'0,0,0,0,0,0,0,10,10,0,0,0,0,10,8,8,8,10,9,9,9,9,9,0,0,0,0\"",
+    "Max7": "\"'0,0,0,0,1,1,1,6,6,1,1,1,1,6,4,4,4,6,5,5,5,5,5,1,2,2,2\""
+  },
+  {
+    "skill": "Unix",
+    "web_order": "3",
+    "doc_order": "12",
+    "Star": "6",
+    "Years": "5",
+    "caption": "AIX, Solaris, Linux; ksh, also: bash",
+    "Sub Skills/Keywords": "AIX, Solaris, Linux, ksh, bash, etc.",
+    "Max11": "\"'0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,0,9,9,9\"",
+    "Max7": "\"1,1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1,3,3,3,1,5,5,5\""
+  }
+]

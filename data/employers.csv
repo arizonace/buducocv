@@ -1,0 +1,18 @@
+empid,name,abbreviation,phone,url,address
+bb,Bloomberg,,+1-212-318-2000,http://bloomberg.com,"731 Lexington Ave, New York, NY 10022"
+gtri,Georgia Tech Research Institute,GTRI,+1-404-894-7325,http://gtri.gatech.edu,"400 10th St NW, Atlanta, GA 30318"
+alu,Alcatel-Lucent,,+1-770-750-2339,http://alcatel-lucent.com,"800 North Pointe Pkwy, Alpharetta, GA 30005"
+att,AT&T,, +1-800-331-0500,http://att.com," 725 W Peachtree St NW, Atlanta, GA  30308"
+agile,Agile Technologies,Agile,+1-678-579-9068,http://www.agiletech.com,"400 Perimeter Center Terrace Ste 145, Atlanta, GA 30346"
+ng,NextGen Healthcare Information Systems,NextGen,+1-404-467-1500,http://nextgen.com,"3340 Peachtree Road NE, Suite 2700, Atlanta, GA 30326"
+rfs,taxslayer.com,,+1-706-868-2333,http://taxslayer.com,"3003 TaxSlayer Drive, Evans, GA 30809"
+ipswitch,Ipswitch,,+1-781-676-5700,http://ipswitch.com,"83 Hartwell Ave, Lexington, MA 02421 (US HQ)"
+gwi,Asymetrix,,,http://www.asymetrix.com,
+tq,Transquest,,,http://delta.com,"1030 Delta Blvd, Dept 982, Atlanta, GA, 30354"
+frb,The Federal Reserve Bank of Atlanta,The Fed,+1-404-498-8500,https://frbatlanta.org,"1000 Peachtree St NE, Atlanta, GA  30309 (since 2001)"
+nova,Nova Information Systems,Nova,+1-678-731-5000,http://elavon.com,"Two Concourse Parkway, Suite 800, Atlanta, GA 30328"
+hvl,Hypermedia and Visualization Laboratory,The HVL,+1-404-651-2245,http://hvl.cs.gsu.edu/hvl/ ,"Georgia State University, Atlanta, GA  30303"
+gap,The Georgia Assessment Project,GAP,+1-404-651-2245,-,"Georgia State University, Atlanta, GA  30303"
+apex,Apex Systems Inc,Apex,,http://apexsystems.com,
+chemtech,Chemtech,,,http://crystalequation.com,
+teltech,TelTech,,,http://www.segulatechnologies.com,
