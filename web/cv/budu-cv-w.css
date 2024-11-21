@@ -1,186 +1,180 @@
 body {
-	background: white;	
-	background-color: #ffffff;
-	align-content: center;
-	align-self: center;
-
-    font-size: 10pt; 
-    /*line-height: 1; */
-	color: black;
-	font-family: Tahoma,Helvetica,sans-serif;	
-	
-	width: 6.5in;
-	max-width: 6.5in;
-	margin-top: 0.75in;
-	margin-left: 0.75in;
-	margin-right: 0.75in;
-	margin-bottom: auto;
+  background: white;
+  background-color: #ffffff;
+  align-content: center;
+  align-self: center;
+  font-size: 10pt;
+  /*line-height: 1; */
+  color: black;
+  font-family: Tahoma,Helvetica,sans-serif;
+  width: 6.5in;
+  max-width: 6.5in;
+  margin-top: 0.75in;
+  margin-left: 0.75in;
+  margin-right: 0.75in;
+  margin-bottom: auto;
 }
 
 table
 {
-    border-collapse: separate;
-    border-style: solid; 
-    border-width: 1px 1px 1px 1px; 
-    border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0; 
+  border-collapse: separate;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0;
 }
 
 th
 {
-	background-color: #bfbfbf;
-	align-content: center;
-	font-size: 12pt;
-	font-weight: bold;
-	text-align: center;
+  background-color: #bfbfbf;
+  align-content: center;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
 }
 
 td
 {
-    border-style: solid; 
-    border-width: 1px 1px 1px 1px; 
-    border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0; 
-    padding: 4px 4px 4px 4px;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0;
+  padding: 4px 4px 4px 4px;
 }
-
 
 /*-------------------------------------
           Budu CV Page Styles
 --------------------------------------*/
-
 h1 {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
-
 /*-------------------------------------
          End Budu CV Page Styles
 --------------------------------------*/
 
 .cv-page
 {
-	background: white;
-	background-color: #ffffff;
-	width: 100%;
+  background: white;
+  background-color: #ffffff;
+  width: 100%;
 }
 
 .cv-between-sections
 {
-	background: white;
-	background-color: #ffffff;
-	width: 100%;
-	height: 0.25in;	
+  background: white;
+  background-color: #ffffff;
+  width: 100%;
+  height: 0.25in;
 }
 
 .cv-section-header
 {
-	background-color: #bfbfbf;
-	align-content: center;
-	font-style: "Negreta,bold";
-	font-size: 12pt;
-	font-weight: bold;
-	text-align: center;
+  background-color: #bfbfbf;
+  align-content: center;
+  font-style: "Negreta,bold";
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
 }
 
 .cv-left-col
 {
-    width:110px;
+  width:110px;
 }
 
 .cv-top
 {
-	align-content: center;
-	text-align: center;
-	font-size: 12pt;
+  align-content: center;
+  text-align: center;
+  font-size: 12pt;
 }
 
 table.cv-top
 {
-    border-style: none; 
-    border-collapse: collapse;
+  border-style: none;
+  border-collapse: collapse;
 }
 
 .cv-top tr
 {
-    border-style: none; 
+  border-style: none;
 }
 
 .cv-top td
 {
-    border-style: none; 
-    padding: 1px 1px 1px 1px;
+  border-style: none;
+  padding: 1px 1px 1px 1px;
 }
 
 .cv-top td p
 {
-	margin: 0 0 0 0;
+  margin: 0 0 0 0;
 }
-
 
 .cv-header-email /*applied to span*/
 {
-	font-size:8pt;
-	color: blue;
-	width: auto;
-	align-self: center;
+  font-size:8pt;
+  color: blue;
+  width: auto;
+  align-self: center;
 }
 
 .cv-section
 {
-	font-size: 9pt;
-	line-height: 1;
+  font-size: 9pt;
+  line-height: 1;
 }
 
 .cv-section td
 {
-    border-style: none; 
+  border-style: none;
 }
 
 .cv-section td p
 {
-	margin: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .competency td p
 {
-	margin: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .competency-name
 {
-    width:60px;
+  width:60px;
 }
 
 .competency-rating
 {
-    width:60px;
+  width:60px;
 }
 
 .competency-years
 {
-    width:30px;
-    text-align: right;
+  width:30px;
+  text-align: right;
 }
 
 .competency-span
 {
-    width:60px;
-    font-size: 100%; 
+  width:60px;
+  font-size: 100%;
 }
 
 .competency-keywords
 {
-    font-size: 9pt;
+  font-size: 9pt;
 }
 
 .competency-col-descs /* applied to p */
 {
-	font-size:9pt;
+  font-size:9pt;
 }
 
 .competency-col-desc /* applied to span */
 {
-    margin: 2px 2px 2px 0px;
-    padding: 0px 4px 0px 16px;
-    background-image: url(img/cv-bullet.gif);
-    background-repeat: no-repeat;
+  margin: 2px 2px 2px 0px;
+  padding: 0px 4px 0px 16px;
+  background-image: url(img/cv-bullet.gif);
+  background-repeat: no-repeat;
 }
