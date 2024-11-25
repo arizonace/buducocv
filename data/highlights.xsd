@@ -1,48 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="cv-highlights">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="job-highlights" maxOccurs="unbounded">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="highlight-list">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="highlight" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="text" type="xs:string"/>
-                      			<xs:element name="space" type="xs:string" minOccurs="0"/>
-														<xs:element name="weblink" minOccurs="0">
-															<xs:complexType>
-																<xs:attribute name="href" type="xs:anyURI" use="required"/>
-															</xs:complexType>
-                            </xs:element>
-													<xs:element name="highlight-detail" maxOccurs="unbounded" minOccurs="0">
-														<xs:complexType>
-															<xs:sequence>
-																<xs:element name="text" type="xs:string"/>
-																<xs:element name="space" type="xs:string" minOccurs="0"/>
-																<xs:element name="weblink" minOccurs="0">
-																	<xs:complexType>
-																		<xs:attribute name="href" type="xs:anyURI" use="required"/>
-																	</xs:complexType>
-																</xs:element>
-															</xs:sequence>
-														</xs:complexType>
-													</xs:element>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="highlight-type" type="xs:string" use="required"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="jobid" type="xs:string" use="required"/>
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+  <xs:element name="cv-highlights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="job-highlights" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="highlight-list">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="highlight" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="text" type="xs:string"/>
+                            <xs:element name="space" type="xs:string" minOccurs="0"/>
+                            <xs:element name="weblink" type="weblinkType" minOccurs="0" />
+                          <xs:element name="highlight-detail" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="text" type="xs:string"/>
+                                <xs:element name="space" type="xs:string" minOccurs="0"/>
+                                <xs:element name="weblink" type="weblinkType" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="highlight-type" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="jobid" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="weblinkType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="href" type="xs:anyURI" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
 </xs:schema>
