@@ -1,3 +1,6 @@
+# azce::OutputWrapper.py - Arizona Edwards
+# Created: 2024-11-24 18:39-EST
+
 import sys
 class OutputWrapper:
     def __init__(self, filename=None, encoding="utf-8"):
