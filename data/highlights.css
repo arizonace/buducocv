@@ -1,5 +1,26 @@
-p {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Helvetica; color: #000000}
-p.highlights {font-weight: bold}
-li {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px Helvetica; color: #000000}
-span {font: 10.0px Symbol}
-ul {list-style-type: disc}
+body {
+  background: white;
+  background-color: #ffffff;
+  align-content: center;
+  align-self: center;
+  font-size: 10pt;
+  color: black;
+  font-family: Tahoma,Helvetica,sans-serif;
+  width: 6.5in;
+  max-width: 6.5in;
+  margin-top: 0.75in;
+  margin-left: 0.75in;
+  margin-right: 0.75in;
+  margin-bottom: auto;
+}
+
+div { width: 100%; margin: 0px 0px 0px 0px; }
+div.highlights h3 { margin-bottom: 0px;}
+div.highlights ul ul { padding-left: 1em; }
+
+div.data:before {
+  content: "[" attr(id) "]";
+  margin: 20px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 14pt;
+}

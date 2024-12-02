@@ -13,9 +13,6 @@ function star_rating(jqo)
     var content = jqo.text();
     var rating = parseInt(content);
 
-    scale_11_7 = [0, 1, 1, 2, 2, 3, 4, 5, 6, 6, 6, 7];
-    rating = scale_11_7[rating];
-
     var blackstars = rating > 5 ? 5 : rating;
     var whitestars = 5 - rating;
     var extrastars = rating > 5 ? rating - 5 : 0;
@@ -59,6 +56,11 @@ function chartspan(jqo)
   jqo.sparkline('html', { type: 'line', chartRangeMin: -1, chartRangeMax: 12, width:'80px'});
 };
 
+function chartspan2(jqo)
+{
+  jqo.sparkline('html', { type: 'line', lineColor: 'red', fillColor: false, chartRangeMin: 0, chartRangeMax: 100, width:'320px', height:'40px'});
+};
+
 
 $.fn.starrating = function () {
     return this.each(function () {
@@ -72,10 +74,18 @@ $.fn.chartspan = function () {
     });
 }
 
+$.fn.chartspan2 = function () {
+  return this.each(function () {
+    chartspan2($(this));
+  });
+}
+
+
 function front_page_load()
 {
   $.fn.sparkline.defaults.common.disableHiddenCheck = true;
   $.fn.sparkline.defaults.common.disableInteraction = true;
   $('.spanchart').chartspan();
+  $('.spanchart2').chartspan2();
   $('.starrating').starrating();
 }

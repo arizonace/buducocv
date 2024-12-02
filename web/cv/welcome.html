@@ -10,7 +10,9 @@
     <script type="text/javascript">$(function() {front_page_load();});</script>
 </head>
 <body>
-<div class="cv-page">
+<div class="cv-page" id="front-page">
+
+<!-- ===== Top/Bio ===== -->
 
 <table cellpadding="0" cellspacing="0" class="cv-top" width="100%">
   <tbody>
@@ -19,13 +21,13 @@
         <p>Arizona Claude Edwards</p>
       </td>
     </tr>
-    <tr class="cv-top">
+    <tr>
       <td style="position:relative;">
         <img src="img/aceplus.png" style="position:absolute; width:25%; height:80%; left:5%; top:10%; opacity:0.2;" />
         <img src="img/qr-linkedin-ace.gif" style="position:absolute; height:120%; width:auto; right:0px; top:5%; opacity:0.7;" />
-        <p>New York, NY</p>
-        <p>770 309 5575</p>
-        <p><span class="cv-header-email">arizonace@gmail.com<span></p>
+        <p>Washington, DC</p>
+        <p>202 888 5614</p>
+        <p><span class="cv-top-email">arizonace@gmail.com<span></p>
       </td>
     </tr>
   </tbody>
@@ -33,316 +35,411 @@
 
 <div class="cv-between-sections"><img src="img/spacer.gif"/></div>
 
-<table cellpadding="0" cellspacing="0" class="competency" width="100%">
+<!-- ===== Competencies ===== -->
+
+<table cellpadding="0" cellspacing="0" class="competencies-table" width="100%">
   <tbody>
-    <tr>
-      <td colspan="5" class="cv-section-header">
-        <p>Competencies</p>
+    <tr class="cv-section-header">
+      <td colspan="6">
+        <p>Skills</p>
+      </td>
+    </tr>
+
+    <!-- Column Headers -->
+    <tr class="cv-column-headers">
+      <td class="competency-name">
+        <p>Skill</p>
+      </td>
+      <td class="competency-years">
+        <p>YoE</p>
+      </td>
+      <td class="competency-years-plus">
+        <p></p>
+      </td>
+      <td class="competency-span">
+        <p>Engagement</p>
+      </td>
+      <td class="competency-rating">
+        <p>Rating</p>
+      </td>
+      <td>
+        <p>Description/Keywords</p>
       </td>
     </tr>
 
     <tr>
-      <td class="competency-name" valign="top">
-        <p>Windows</p>
+      <td class="competency-name">
+        <p>Classic C++</p>
       </td>
-      <td class="competency-years" valign="top">
-        <p>20+</p>
+      <td class="competency-years">
+        10
       </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">8,9,9,9,9,9,9,10,10,11,11,11,11,9,9,9,9,10,9,9,11,11,11,9,0,0,0,0,0,0,0,0,1,1</span></p>
+      <td class="competency-years-plus">
+        +
       </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">5</span></p>
+      <td class="competency-span">
+        <p><span class="spanchart">0,3,4,5,6,7,8,9,9,10,11,11,11,11,0,0,10,3,3,3,3,3,7,10,,,,,,,,,</span></p>
       </td>
-      <td class="competency-keywords" valign="top">
-        <p>Early versions, Internals, GDI, COM, .NET, etc.</p>
+      <td class="competency-rating">
+        <p><span class="starrating">6</span></p>
       </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
-        <p>Web</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>10+</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">0,0,0,0,0,0,0,10,10,0,0,0,0,10,8,8,8,10,9,9,9,9,9,0,0,0,0,0,0,0,2,2,1,1</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">5</span></p>
-      </td>
-      <td class="competency-keywords" valign="top">
-        <p>ASP.Net, HTML, JavaScript, CSS, JSP etc.</p>
+      <td class="competency-keywords">
+        <p>ATL, MFC, also: FCL, C++/CLI, OWL. etc.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="competency-name" valign="top">
-        <p>Unix</p>
+      <td class="competency-name">
+        <p>Modern C++</p>
       </td>
-      <td class="competency-years" valign="top">
-        <p>10+</p>
+      <td class="competency-years">
+        3
       </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,0,9,9,9,9,9,9,9,9,9,2</span></p>
+      <td class="competency-years-plus">
+        
       </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">5</span></p>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,,,,,,,,,,,,,,,,3,7,7,7,,,,,,</span></p>
       </td>
-      <td class="competency-keywords" valign="top">
-        <p>AIX, Solaris, Linux; ksh, also: bash</p>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
-        <p>C++</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>10+</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">0,7,8,8,9,9,9,9,9,10,10,10,10,0,0,0,0,9,0,0,0,0,0,11,11,11,11,0,0,0,0,0,1,2</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">8</span></p>
-      </td>
-      <td class="competency-keywords" valign="top">
-        <p>STL, ATL, MFC, .Net, Modern C++</p>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
-        <p>DotNet</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>8</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,0,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">4</span></p>
-      </td>
-      <td class="competency-keywords" valign="top">
-        <p>Web and desktop using C#, VB.Net, C++/CLI</p>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
-        <p>Python</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>5+</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,7,9,9,9,4,4,4,4,4,4,2</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">5</span></p>
-      </td>
-      <td class="competency-keywords" valign="top">
-        <p>DotNet Interop, multiprocessing, Robot Testing, etc.</p>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
-        <p>Java/Kotlin</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>6</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">0,0,0,0,0,0,0,7,7,0,0,0,0,0,0,0,0,0,0,0,7,7,7,0,0,0,0,9,9,9,9,9,4,0</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">4</span></p>
-      </td>
-      <td class="competency-keywords" valign="top">
-        <p>Android, JNI, Web-Applets, [Micro]Services</p>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
-        <p>Cloud</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>5</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4,4,9,9,9,9,1</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
+      <td class="competency-rating">
         <p><span class="starrating">3</span></p>
       </td>
-      <td class="competency-keywords" valign="top">
-        <p>Website maintenance, basic sites</p>
+      <td class="competency-keywords">
+        <p>STL, AIX, Solaris, Linux</p>
       </td>
     </tr>
 
     <tr>
-      <td class="competency-name" valign="top">
+      <td class="competency-name">
+        <p>C#/DotNet</p>
+      </td>
+      <td class="competency-years">
+        8
+      </td>
+      <td class="competency-years-plus">
+        
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,,,,,,5,6,7,8,9,9,10,10,11,11,11,,,,,,,,,</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">4</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>Windows Forms, DLLs, Interop, Web ASP.NET</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>Python</p>
+      </td>
+      <td class="competency-years">
+        2
+      </td>
+      <td class="competency-years-plus">
+        <sup>*</sup>
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,,,,,,,,,,,,,,,4,5,6,7,7,1,1,1,1,1,1</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">4</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>PEP-008, multiprocessing, .NET and C++ Interop</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>JavaScript</p>
+      </td>
+      <td class="competency-years">
+        2
+      </td>
+      <td class="competency-years-plus">
+        <sup>*</sup>
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,,,,,,,,,5,6,6,,,,,,6,6,6,6,6,6,6,6,6</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">4</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>Web, Bloomberg Terminal, Node, Typescript.</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>Java/Kotlin</p>
+      </td>
+      <td class="competency-years">
+        5
+      </td>
+      <td class="competency-years-plus">
+        
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,5,,,,,,,,,5,5,,,5,5,,,,,5,6,7,7,7,7</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">4</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>Enterprise Java, Android, JNI, Web-Applets, Tomcat</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>Windows</p>
+      </td>
+      <td class="competency-years">
+        10
+      </td>
+      <td class="competency-years-plus">
+        +
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">7,8,9,10,11,11,11,11,11,11,11,11,11,10,10,10,11,10,10,10,10,10,11,11,,,,,,,,,</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">5</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>Since 3.0, Internals, SDK, GDI/+, COM/+</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>Web</p>
+      </td>
+      <td class="competency-years">
+        5
+      </td>
+      <td class="competency-years-plus">
+        +
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,6,7,,,,,6,7,,5,6,7,8,9,10,9,,,,,4,4,4,4,4,4</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">3</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>ASP.Net, HTML, JavaScript, CSS, Frameworks</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>Unix</p>
+      </td>
+      <td class="competency-years">
+        3
+      </td>
+      <td class="competency-years-plus">
+        
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">1,2,3,,,,,,,1,1,1,1,,,,,,,3,3,3,3,4,5,6,7,1,1,1,1,1,1</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">3</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>AIX, Solaris, Linux; Darwin (MacOS), Bloomberg</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
+        <p>Cloud</p>
+      </td>
+      <td class="competency-years">
+        5
+      </td>
+      <td class="competency-years-plus">
+        
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,,,,,,,,,,,,,,,,,,,,1,2,3,4,5,6</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">2</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>AWS, DynamoDB, SQS, S3, Elasticsearch, Serverless</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="competency-name">
         <p>Databases</p>
       </td>
-      <td class="competency-years" valign="top">
-        <p>20+</p>
+      <td class="competency-years">
+        10
       </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">9,0,9,9,11,9,0,0,0,0,0,0,0,9,9,11,9,0,9,9,9,9,9,0,9,9,9,9,9,9,9,9,9,0</span></p>
+      <td class="competency-years-plus">
+        +
       </td>
-      <td class="competency-rating" valign="top">
+      <td class="competency-span">
+        <p><span class="spanchart">5,6,7,7,7,10,2,,,,,,,7,8,9,8,9,9,10,10,10,10,,7,7,7,7,7,7,7,7,7</span></p>
+      </td>
+      <td class="competency-rating">
         <p><span class="starrating">5</span></p>
       </td>
-      <td class="competency-keywords" valign="top">
-        <p>Design, DDL, SQL, Document DB, etc.</p>
+      <td class="competency-keywords">
+        <p>Design, DDL, Data Tier, SQL, NoSQL, Desktop</p>
       </td>
     </tr>
 
     <tr>
-      <td class="competency-name" valign="top">
-        <p>IPTV</p>
-      </td>
-      <td class="competency-years" valign="top">
-        <p>5</p>
-      </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,9,9,9,9,9,0,0,0,0,null,null,null,null,null,null,null</span></p>
-      </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">5</span></p>
-      </td>
-      <td class="competency-keywords" valign="top">
-        <p>VHO Integration, set-top-box, over-the-top, etc.</p>
-      </td>
-    </tr>
-
-    <tr>
-      <td class="competency-name" valign="top">
+      <td class="competency-name">
         <p>TCP/IP</p>
       </td>
-      <td class="competency-years" valign="top">
-        <p>5</p>
+      <td class="competency-years">
+        3
       </td>
-      <td class="competency-span" valign="top">
-        <p><span class="spanchart">0,0,0,0,0,0,7,0,0,9,9,11,11,0,0,0,0,0,0,0,0,0,0,8,0,0,0</span></p>
+      <td class="competency-years-plus">
+        
       </td>
-      <td class="competency-rating" valign="top">
-        <p><span class="starrating">5</span></p>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,3,3,3,,,5,7,10,10,10,,,,,,10,10,10,,,,,,,,,,,</span></p>
       </td>
-      <td class="competency-keywords" valign="top">
+      <td class="competency-rating">
+        <p><span class="starrating">4</span></p>
+      </td>
+      <td class="competency-keywords">
         <p>SSH, SSL/TLS; WS_FTP - fastest FTP client at the time</p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="5">
-        <p class="competency-col-descs">
-          Over the years I have gained significant experience in multiple technologies and industries.
-          I have a range of levels of competency and experience, so I have done my best above to accurately estimate and depict for each skill:
-          <br/>
-          <span style="margin: 1px; 2px; 1px; 4px;">&bull; years of accumulated experience</span>
-          <span style="margin: 1px; 2px; 1px; 4px;">&bull; usage over time</span>
-          <span style="margin: 1px; 2px; 1px; 4px;">&bull; overall self rating</span>
-          <br/>
-          I look forward to the opportunity to prove myself in interviews and via online tests,
-          and to contributing positively to your organization.
-        </p>
+      <td class="competency-name">
+        <p>IPTV</p>
+      </td>
+      <td class="competency-years">
+        5
+      </td>
+      <td class="competency-years-plus">
+        
+      </td>
+      <td class="competency-span">
+        <p><span class="spanchart">0,,,,,,,,,,,,,,,,,,6,7,8,9,10,,,,,,,,,,</span></p>
+      </td>
+      <td class="competency-rating">
+        <p><span class="starrating">3</span></p>
+      </td>
+      <td class="competency-keywords">
+        <p>ASP.Net MRML to set-top-box, VHO integration.</p>
       </td>
     </tr>
 
+    <tr class="competency-narrative">
+      <td colspan="6">
+        <p>
+          While I do not claim to maintain focused expertise in all the above simultaneously, I have a strong inventory of current and refreshable skills and solution finding experience.
+          The table above is my attempt to estimate and depict for each skill my:
+        </p>
+        <p class="competency-bullets">
+          <span>◇ proficiency development;</span>
+          <span>◇ engagement over time;</span>
+          <span>◇ overall self rating.</span>
+          <br/>
+        </p>
+        <p>
+          I look forward to the opportunity to prove myself via interviews and assessments, and to contribute positively to your organization.
+        </p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
 <div class="cv-between-sections"><img src="img/spacer.gif"/></div>
-<table cellpadding="0" cellspacing="0" class="cv-section" width="100%">
+
+<!-- ===== Disciplines ===== -->
+
+<table cellpadding="0" cellspacing="0" class="cv-section-table" width="100%">
   <tbody>
-    <tr>
-      <td colspan="2" class="cv-section-header">
-        <p>Disciplines</p>
+    <tr class="cv-section-header">
+      <td colspan="2">
+        <p>Aspects</p>
       </td>
     </tr>
+
     <tr>
-      <td class="cv-left-col" valign="top">
+      <td>
         <p>Multi-Sector</p>
       </td>
-      <td valign="top">
+      <td>
         <p>Experience in Financial, Healthcare, Education, Defense, Internet, TV, and other industries.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="cv-left-col" valign="top">
+      <td>
         <p>Travel/Consulting</p>
       </td>
-      <td valign="top">
-        <p>Traveling for trade shows, client meetings, and internal meetings.</p>
+      <td>
+        <p>Traveling for trade shows, client meetings, collaboration, and recruiting.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="cv-left-col" valign="top">
-        <p>User Experience/UI</p>
+      <td>
+        <p>User Experience</p>
       </td>
-      <td valign="top">
-        <p>UX design, development and testing.</p>
+      <td>
+        <p>UX/UI designing, building, testing including for limited input devices such as phones and TVs.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="cv-left-col" valign="top">
+      <td>
         <p>Multimedia</p>
       </td>
-      <td valign="top">
-        <p>Programming, encoding, decoding and delivering image, video and music formats.</p>
+      <td>
+        <p>Programming, encoding, decoding, and delivering image, video, and music formats.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="cv-left-col" valign="top">
-        <p>Education</p>
+      <td>
+        <p>Algorithms</p>
       </td>
-      <td valign="top">
-        <p>Developing and delivering eLearning products.</p>
+      <td>
+        <p>Efficiently identifying and applying the appropriate algorithms and data structures.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="cv-left-col" valign="top">
+      <td>
         <p>Team Lead</p>
       </td>
-      <td valign="top">
-        <p>Experience and recognition as team lead, principal developer, guide and mentor.</p>
+      <td>
+        <p>Experience and recognition as team lead, principal developer, guide, and mentor.</p>
       </td>
     </tr>
 
     <tr>
-      <td class="cv-left-col" valign="top">
+      <td>
         <p>low level coding</p>
       </td>
-      <td valign="top">
+      <td>
         <p>Coding at the bit level, endianness, protocols, layouts, MIL-STD-1553, Arduino, etc.</p>
       </td>
     </tr>
 
-    <tr>
-      <td class="cv-left-col" valign="top">
-        <p>Mobile</p>
-      </td>
-      <td valign="top">
-        <p>Experience developing on Android and iPhone.</p>
-      </td>
-    </tr>
   </tbody>
 </table>
 
-
 <div class="cv-between-sections"><img src="img/spacer.gif"/></div>
-<table cellpadding="0" cellspacing="0" class="cv-section" width="100%">
+<table cellpadding="0" cellspacing="0" class="cv-section-table" width="100%">
   <tbody>
     <tr class="cv-section-header">
       <td width="50%">
@@ -369,6 +466,6 @@
   </tbody>
 </table>
 
-</div>
+</div> <!-- front-page -->
 </body>
 </html>

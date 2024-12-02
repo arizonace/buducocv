@@ -40,33 +40,32 @@ td
   padding: 4px 4px 4px 4px;
 }
 
-/*-------------------------------------
-          Budu CV Page Styles
---------------------------------------*/
 h1 {
   width: 100%;
   text-align: center;
 }
-/*-------------------------------------
-         End Budu CV Page Styles
---------------------------------------*/
 
-.cv-page
+.cv-page {  width: 100%; }
+.cv-between-sections { height: 0.25in; }
+
+.cv-section-table /* applied to table */
 {
-  background: white;
-  background-color: #ffffff;
-  width: 100%;
+  border-style: none;
+  font-size: 9pt;
+  line-height: 1;
 }
 
-.cv-between-sections
+.cv-section-table td
 {
-  background: white;
-  background-color: #ffffff;
-  width: 100%;
-  height: 0.25in;
+  border-style: none;
 }
 
-.cv-section-header
+.cv-section-table td p
+{
+  margin: 0 0 0 0;
+}
+
+.cv-section-header /* applied to tr */
 {
   background-color: #bfbfbf;
   align-content: center;
@@ -76,41 +75,26 @@ h1 {
   text-align: center;
 }
 
-.cv-left-col
+.cv-column-headers td p /* cv-column-headers applied to tr */
 {
-  width:110px;
+  margin: 0 0 0 0;
+  font-weight: bold;
+  font-size: smaller;
+  vertical-align: top;
 }
 
-.cv-top
+/* ----- Top/Bio Section table ----- */
+table.cv-top
 {
   align-content: center;
   text-align: center;
   font-size: 12pt;
+  border-style: none; 
+  border-collapse: collapse; 
 }
-
-table.cv-top
-{
-  border-style: none;
-  border-collapse: collapse;
-}
-
-.cv-top tr
-{
-  border-style: none;
-}
-
-.cv-top td
-{
-  border-style: none;
-  padding: 1px 1px 1px 1px;
-}
-
-.cv-top td p
-{
-  margin: 0 0 0 0;
-}
-
-.cv-header-email /*applied to span*/
+.cv-top td { border-style: none; padding: 1px 1px 1px 1px; }
+.cv-top td p { margin: 0 0 0 0; }
+.cv-top-email /*applied to span*/
 {
   font-size:8pt;
   color: blue;
@@ -118,41 +102,38 @@ table.cv-top
   align-self: center;
 }
 
-.cv-section
-{
-  font-size: 9pt;
-  line-height: 1;
-}
-
-.cv-section td
-{
-  border-style: none;
-}
-
-.cv-section td p
-{
-  margin: 0 0 0 0;
-}
-
-.competency td p
+/* ----- Competency Section table ----- */
+.competencies-table td p
 {
   margin: 0 0 0 0;
 }
 
 .competency-name
 {
-  width:60px;
+  width:80px;
 }
 
 .competency-rating
 {
-  width:60px;
+  width:50px;
 }
 
 .competency-years
 {
   width:30px;
   text-align: right;
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.competency-years-plus
+{
+  width:5px;
+  text-align: left;
+  border-left: none;
+  padding-left: 1pt;
+  margin-left: 0;
 }
 
 .competency-span
@@ -166,15 +147,18 @@ table.cv-top
   font-size: 9pt;
 }
 
-.competency-col-descs /* applied to p */
+.competency-narrative /* applied to tr */
 {
   font-size:9pt;
 }
 
-.competency-col-desc /* applied to span */
-{
-  margin: 2px 2px 2px 0px;
-  padding: 0px 4px 0px 16px;
-  background-image: url(img/cv-bullet.gif);
-  background-repeat: no-repeat;
+.competency-bullets {
+  font-weight: bold;
+  text-align: center;
+  font-size: 8pt;
+  padding: 0.25em 0.25rem 0.5rem 0.25rem;
+}
+
+.competency-bullets span {
+  margin: 1px 2px 1px 4px;
 }

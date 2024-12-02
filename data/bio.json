@@ -1,27 +1,26 @@
-{ 
-    "last_name": "edwards", 
-    "first_name": "arizona", 
-    "address": { 
-        "postal_code": "20910", 
-        "country": "USA", 
-        "state": "MD", 
-        "city": "Silver Spring" 
-    }, 
-    "phone": "+1 (770) 309 5575", 
+{
+    "last_name": "edwards",
+    "first_name": "arizona",
+    "resume_address": {
+        "country": "USA",
+        "state": "DC",
+        "city": "Washington"
+    },
+    "phone": "USA: +1 (202) 888 5614",
     "email": "arizonace@gmail.com",
     "linked_in_recommendations": "linkedin.com/in/arizona-edwards#recommendations",
-    "education": [ 
-        { 
-            "institution": "Georgia State University", 
-            "institution_address": { 
-                "postal_code": "30303", 
-                "country": "USA", 
-                "state": "GA", 
-                "city": "Atlanta" 
-            }, 
-            "achievement": "Bachelor of Science in Computer Science with Math minor", 
-            "achievement_date": "1992-08-31", 
-            "achievement_date_precision": "Month" 
-        } 
-    ] 
+    "education": [
+        {
+            "institution": "Georgia State University",
+            "institution_address": {
+                "postal_code": "30303",
+                "country": "USA",
+                "state": "GA",
+                "city": "Atlanta"
+            },
+            "achievement": "Bachelor of Science in Computer Science with Math minor",
+            "achievement_date": "1992-08-31",
+            "achievement_date_precision": "Month"
+        }
+    ]
 }

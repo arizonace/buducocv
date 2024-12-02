@@ -30,7 +30,7 @@ def csv_to_json(csv_file_path, json_file_path, dict_key=None, pop_key=False):
 
         if dict_key and dict_key not in csv_reader.fieldnames:
             print(f'Error: dict_key "{dict_key}" not found in CSV field names.', file=sys.stderr)
-            return        
+            return
 
         for row in csv_reader:
             data.append(row)
@@ -43,7 +43,7 @@ def csv_to_json(csv_file_path, json_file_path, dict_key=None, pop_key=False):
                     key = row.pop(dict_key)
                     jo[key]=row
                 else:
-                    jo[row[dict_key]]=row                
+                    jo[row[dict_key]]=row
             json.dump(jo, json_file, indent=4)
         else:
             json.dump(data, json_file, indent=4)
@@ -58,13 +58,13 @@ def main():
     parser = argparse.ArgumentParser(description='Convert CSV to JSON')
     parser.add_argument('csv_file', help='Path to the input CSV file.')
     parser.add_argument('json_file', nargs='?', help='Path to the output JSON file. The "%%" character will be replaced with the csv basename. '
-                        'Overrides -j/--auto-json, -o/output, -O/output-nosub. Writes to stdout if not specified.')   
+                        'Overrides -j/--auto-json, -o/output, -O/output-nosub. Writes to stdout if not specified.')
     parser.add_argument('-j', '--auto-json', action='store_true', help='Automatically create json output name by replacing .csv or blank extension')
     parser.add_argument('-S', '--nosub', action='store_true', help='Do not automatically replace %% in the specified output filename with the csv basename')
-    parser.add_argument('-d', '--dictkey',action='store', nargs=1, help='Create a JSON object instead of a JSON array using the specified key as the object name for each row. '
+    parser.add_argument('-d', '--dictkey', action='store', nargs=1, help='Create a JSON object instead of a JSON array using the specified key as the object name for each row. '
                         'Specify a 1-based integer column index or a field name. If the field name is an integer, wrap the argument in single and double quotes. e.g. \'"1"\'.')
-    parser.add_argument('-p', '--popkey',action='store_true', help='Pop the key from each JSON sub object. Only meaningful with -d/--dictkey')
-    parser.add_argument('--force-overwrite',action='store_true', help='Overwrite the output file if it exists')
+    parser.add_argument('-p', '--popkey', action='store_true', help='Pop the key from each JSON sub object. Only meaningful with -d/--dictkey')
+    parser.add_argument('--force-overwrite', action='store_true', help='Overwrite the output file if it exists')
     args = parser.parse_args()
 
     args_fail = False
@@ -87,19 +87,19 @@ def main():
 
     csv_name = args.csv_file
     if not os.path.isfile(csv_name) and not csv_name.endswith('.csv') and os.path.isfile(csv_name + '.csv'):
-        csv_name += '.csv'    
+        csv_name += '.csv'
         print(f'Info: Auto appended ".csv" extension to "{csv_name}".', file=sys.stderr)
-    
+
     json_name = args.json_file if args.json_file else csv_to_json_ext(args.csv_file) if args.auto_json else None
     if not args.auto_json and not args.nosub and json_name and '%' in json_name:
         basename = os.path.splitext(os.path.basename(csv_name))[0] if csv_name.endswith('.csv') else csv_name
         json_name = json_name.replace('%', basename)
         print(f'Info: Auto replaced % with "{basename}" in "{json_name}".', file=sys.stderr)
-        
+
     if json_name and os.path.isfile(json_name) and not args.force_overwrite:
         print(f"Error: Output file '{json_name}' already exists", file=sys.stderr)
         return
-    
+
     dict_key = args.dictkey[0] if args.dictkey else None
     if dict_key:
         if dict_key.isdecimal():
