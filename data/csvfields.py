@@ -169,7 +169,7 @@ def replace_csv_extension(filename, extension):
         return filename + extension
 
 def main():
-    parser = argparse.ArgumentParser(description='Convert CSV to JSON')
+    parser = argparse.ArgumentParser(description='Format CSV files.')
     parser.add_argument('-i', '--input', help='Path to the input CSV file')
     parser.add_argument('-o', '--output', help='Path to the output file, %% in the name will be replaced with the input file basename'
                         ' while a value of %%.%% will auto generate the entire output filename')
@@ -186,6 +186,7 @@ def main():
     parser.add_argument('-p', '--popkey', action='store_true', help='Pop the key from each JSON sub object. Only meaningful with -j/--json and -k/--key')
     parser.add_argument('-k', '--key', help='Which field to use as the key for operations that need a key like --rows or --json.'
                         ' Specify a 1-based integer column index or a field name. If the field name is an integer, wrap the argument in single and double quotes. e.g. \'"1"\'.')
+    parser.add_argument('-l', '--lines', action='store_true', help='Output as text, one field per line.')
     parser.add_argument('-v', '--verbose', action='store_true', help='Print verbose output. Includes -s/--showfields.')
     parser.add_argument('--format', help='Format each row using the specified template')
     parser.add_argument('--html', action='store_true', help='Wrap the formatted rows in a complete HTML file.')
@@ -196,7 +197,7 @@ def main():
         print("Error: You must specify an input CSV file. See --help.", file=sys.stderr)
         args_fail = True
     if args.output and args.output_nosub:
-        print("Error: You must may not specify both -o/--output and -O/--output_nosub. See --help.", file=sys.stderr)
+        print("Error: You may not specify both -o/--output and -O/--output_nosub. See --help.", file=sys.stderr)
         args_fail = True
     if not (args.output or args.output_nosub) and (args.nosub or args.force_overwrite):
         print("Error: You may not specify filename modifiers like -S/--nosub or --force-overwrite without also specifying an output file. See --help.", file=sys.stderr)

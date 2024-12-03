@@ -1,10 +1,12 @@
+/* buducocv.css - Arizona Edwardcs
+#  Created: 2016-10-17 as budu-cv.css */
+
 body {
   background: white;
   background-color: #ffffff;
   align-content: center;
   align-self: center;
   font-size: 10pt;
-  /*line-height: 1; */
   color: black;
   font-family: Tahoma,Helvetica,sans-serif;
   width: 6.5in;
@@ -15,12 +17,24 @@ body {
   margin-bottom: auto;
 }
 
+h1
+{
+  width: 100%;
+  text-align: center;
+}
+
+p
+{
+  margin: 0 0 0 0;
+}
+
 table
 {
   border-collapse: separate;
   border-style: solid;
   border-width: 1px 1px 1px 1px;
   border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0;
+  font-size: 9pt;
 }
 
 th
@@ -38,15 +52,22 @@ td
   border-width: 1px 1px 1px 1px;
   border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0;
   padding: 4px 4px 4px 4px;
+  height: 11px;  
+  vertical-align: top;
 }
 
-h1 {
-  width: 100%;
+#download {
   text-align: center;
+  margin-top: 1em;
+  font-size: 10pt;
+  background-color: #e3eaed; 
 }
 
 .cv-page {  width: 100%; }
+
 .cv-between-sections { height: 0.25in; }
+
+.cv-between-pages { height: 0.5in; }
 
 .cv-section-table /* applied to table */
 {
@@ -103,6 +124,9 @@ table.cv-top
 }
 
 /* ----- Competency Section table ----- */
+table.competencies-table {
+  border-collapse: collapse;
+}
 .competencies-table td p
 {
   margin: 0 0 0 0;
@@ -151,6 +175,10 @@ table.cv-top
 {
   font-size:9pt;
 }
+.competency-narrative td p {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
 
 .competency-bullets {
   font-weight: bold;
@@ -162,3 +190,28 @@ table.cv-top
 .competency-bullets span {
   margin: 1px 2px 1px 4px;
 }
+
+td.summary-details-header p { background-color: #bfbfbf; font-size: 9pt; }
+tr.summary-label { background-color: #e3eaed; }
+tr.summary-label td { background-color: #e3eaed; }
+tr.summary-did { background-color: #ffffff; height: 2.5em;}
+td.summary-label { width: 200px;}
+td.summary-label p { font-weight: bold; }
+td.summary-position { width: 153px; }
+td.summary-timeframe { width: 90px; }
+td.summary-timeframe p { text-align: right; }
+td.summary-did { width: 459px; }
+td.summary-did p { text-align: justify; }
+
+table.detail-table {
+  border-collapse: collapse;
+  margin: 2em 0 0 0;
+}
+tr.detail-label {  background-color: #e3eaed;  margin: 1em 0 0 0; }
+td.detail-label { width: 207px; }
+td.detail-address { width: 236px; }
+table.detail-fields { width: 100%; border-style: none ; }
+table.detail-fields td { border-style: none; margin: 0; padding: 0; }
+td.detail-field-label { font-style: italic; padding: 2px 20px 0 0 !important; margin: 2px 20px 0 0; }
+.detail-company td p { font-style: italic; }
+.detail-endyear { display: none; }

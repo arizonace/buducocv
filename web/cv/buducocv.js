@@ -1,3 +1,6 @@
+// buducocv.js - Arizona Edwards
+// Created: 2016-10-19
+
 var ch_blackstar = '★';
 var ch_whitestar = '☆';
 function star_rating(jqo)
@@ -35,32 +38,10 @@ function star_rating(jqo)
   }
 };
 
-function bulletrating(jqo)
-{
-  var content = jqo.text();
-  var rating = parseInt(content);
-  jqo.sparkline([rating,rating,9], {type: 'bullet', width:'60px'});
-};
-
-
-function bulletrating(jqo)
-{
-  var content = jqo.text();
-  var rating = parseInt(content);
-  jqo.sparkline([rating,rating,9], {type: 'bullet', width:'60px'});
-};
-
-
 function chartspan(jqo)
 {
   jqo.sparkline('html', { type: 'line', chartRangeMin: -1, chartRangeMax: 12, width:'80px'});
 };
-
-function chartspan2(jqo)
-{
-  jqo.sparkline('html', { type: 'line', lineColor: 'red', fillColor: false, chartRangeMin: 0, chartRangeMax: 100, width:'320px', height:'40px'});
-};
-
 
 $.fn.starrating = function () {
     return this.each(function () {
@@ -74,18 +55,49 @@ $.fn.chartspan = function () {
     });
 }
 
-$.fn.chartspan2 = function () {
-  return this.each(function () {
-    chartspan2($(this));
-  });
+$.fn.hide_parent_if_empty = function () {
+    return this.each(function () {
+      if ($(this).text().trim() == "") { $(this).parent().hide(); }
+    });
 }
 
+function addPrintCSS(filename) {
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = filename;
+  document.head.appendChild(link);
+}
+
+function unloadCSS(filename) {
+  const linkElement = document.querySelector(`link[href="${filename}"]`);
+
+  if (linkElement) {
+    document.head.removeChild(linkElement);
+  }
+}
 
 function front_page_load()
 {
   $.fn.sparkline.defaults.common.disableHiddenCheck = true;
   $.fn.sparkline.defaults.common.disableInteraction = true;
   $('.spanchart').chartspan();
-  $('.spanchart2').chartspan2();
   $('.starrating').starrating();
+  $('.detail-field-label').css({"font-weight": "bold"});
+  $('.detail-field-value').hide_parent_if_empty();
+
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  if (urlSearchParams.has('nodetails')) { $('#details-page').hide(); }
+  if (urlSearchParams.has('nosummary')) { $('#summary-page').hide(); }
+  if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
+  if (urlSearchParams.has('print')) {
+    const params = new Proxy(urlSearchParams, { get: (searchParams, prop) => searchParams.get(prop), });
+    if (params.print == "frontpage") {
+      unloadCSS("buducocv-print.css");
+      addPrintCSS("buducocv-print-frontpage.css");
+      $('#summary-page').hide();
+      $('#details-page').hide();
+      $('.cv-between-pages').hide();
+    } 
+  }
 }

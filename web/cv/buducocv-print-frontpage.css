@@ -1,0 +1,11 @@
+/* buducocv-print-frontpage.css - Arizona Edwardcs
+#  Created: 2024-12-03 17:20-EST */
+
+@media print {
+  #details-page { display: none; }
+  #summary-page { display: none; }
+
+  @page {
+    size: letter;
+  }
+}
