@@ -6,7 +6,7 @@ body {
   background-color: #ffffff;
   align-content: center;
   align-self: center;
-  font-size: 10pt;
+  font-size: 9pt;
   color: black;
   font-family: Tahoma,Helvetica,sans-serif;
   width: 6.5in;
@@ -36,7 +36,6 @@ table
   border-style: solid;
   border-width: 1px 1px 1px 1px;
   border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0;
-  font-size: 9pt;
 }
 
 th
@@ -65,6 +64,8 @@ td
   background-color: #e3eaed; 
 }
 
+#details-page { display: none; }
+
 .cv-page {  width: 100%; }
 
 .cv-between-sections { height: 0.25in; }
@@ -74,7 +75,6 @@ td
 .cv-section-table /* applied to table */
 {
   border-style: none;
-  font-size: 9pt;
   line-height: 1;
 }
 
@@ -88,12 +88,12 @@ td
   margin: 0 0 0 0;
 }
 
-.cv-section-header /* applied to tr */
+.cv-section-header
 {
   background-color: #bfbfbf;
   align-content: center;
   font-style: "Negreta,bold";
-  font-size: 12pt;
+  /*font-size: 12pt;*/
   font-weight: bold;
   text-align: center;
 }
@@ -168,15 +168,6 @@ table.competencies-table {
   font-size: 100%;
 }
 
-.competency-keywords
-{
-  font-size: 9pt;
-}
-
-.competency-narrative /* applied to tr */
-{
-  font-size:9pt;
-}
 .competency-narrative td p {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
@@ -193,7 +184,7 @@ table.competencies-table {
   margin: 1px 2px 1px 4px;
 }
 
-td.summary-details-header p { background-color: #bfbfbf; font-size: 9pt; }
+td.summary-details-header p { background-color: #bfbfbf; }
 tr.summary-label { background-color: #e3eaed; }
 tr.summary-label td { background-color: #e3eaed; }
 tr.summary-did { background-color: #ffffff; height: 2.5em;}
@@ -218,6 +209,7 @@ td.detail-field-label { font-style: italic; padding: 2px 20px 0 0 !important; ma
 .detail-company td p { font-style: italic; }
 .detail-endyear { display: none; }
 
-div.highlights h3 { margin: 3px 0 3px 0; font-size: 9pt;}
+.detail-highlights { display: none; }
+div.highlights h3 { margin: 3px 0 3px 0; font-size: 9pt; }
 div.highlights ul { padding-left: 1em; margin-left: 1em; margin-top: 0; }
 div.highlights ul ul { padding-left: 0.75em; }

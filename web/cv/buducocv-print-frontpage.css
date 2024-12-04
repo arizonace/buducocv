@@ -4,8 +4,13 @@
 @media print {
   #details-page { display: none; }
   #summary-page { display: none; }
+  .cv-between-pages { display: none; }
 
   @page {
     size: letter;
   }
 }
+
+#details-page { display: none; }
+#summary-page { display: none; }
+.cv-between-pages { display: none; }

@@ -67,6 +67,12 @@ $.fn.hide_if_empty = function () {
   });
 }
 
+$.fn.show_if_not_empty = function () {
+  return this.each(function () {
+    if ($(this).text().trim() != "") { $(this).show(); }
+  });
+}
+
 function addPrintCSS(filename) {
   const link = document.createElement("link");
   link.rel = "stylesheet";
@@ -94,19 +100,23 @@ function front_page_load()
   $('.detail-field-value').hide_parent_if_empty();
 
   const urlSearchParams = new URLSearchParams(window.location.search);
-  if (urlSearchParams.has('nodetails')) { $('#details-page').hide(); }
-  if (urlSearchParams.has('nosummary')) { $('#summary-page').hide(); }
-  if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
-  if (urlSearchParams.has('nohighlights')) { $('.detail-highlights').hide(); } else { $('.detail-highlights').hide_if_empty(); }
+  let showSummary = !urlSearchParams.has('nosummary');
+  let showHighlights = showSummary && urlSearchParams.has('highlights');
+  let showDetails = showSummary && (showHighlights || urlSearchParams.has('details'));
 
+  if (!showSummary) { 
+    $('#summary-page').hide(); 
+  } else {
+    if (showDetails) { $('#details-page').show(); }
+    if (showHighlights) { $('.detail-highlights').show_if_not_empty(); }
+  }
+  if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
+  
   if (urlSearchParams.has('print')) {
     const params = new Proxy(urlSearchParams, { get: (searchParams, prop) => searchParams.get(prop), });
     if (params.print == "frontpage") {
       unloadCSS("buducocv-print.css");
       addPrintCSS("buducocv-print-frontpage.css");
-      $('#summary-page').hide();
-      $('#details-page').hide();
-      $('.cv-between-pages').hide();
     } else if (params.print == "rowbreak") {
       unloadCSS("buducocv-print.css");
       addPrintCSS("buducocv-print-rowbreak.css");
