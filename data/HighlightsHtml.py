@@ -88,3 +88,12 @@ class HighlightsHtml:
         return HighlightsHtml.html_start.format(DocTitle="Arizona Edwards' Employment Highlights") \
           + '\n\n'.join([HighlightsHtml.make_job(job) for job in cv_highlights.jobs]) \
           + HighlightsHtml.html_end
+    
+    @staticmethod
+    def make_csv_row(job):        
+        return job.jobid + ',' + '"' + HighlightsHtml.make_job(job).replace('"', '""') + '"'
+    
+    @staticmethod
+    def make_csv(cv_highlights):
+        return 'jobid,highlightsHTML\n' + '\n'.join([HighlightsHtml.make_csv_row(job) for job in cv_highlights.jobs])
+    

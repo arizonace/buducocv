@@ -5,13 +5,107 @@
 import sys
 import os
 import argparse
+import re
 import csv
 import json
+from collections import namedtuple
 from OutputWrapper import OutputWrapper
 from buducocvHtml import BuducoCvHtml
 
+Join = namedtuple('Join', ['filename', 'key', 'fkey', 'columns'])
+
+re_join_spec = re.compile(r'^([^:=,]+)(:[^=,]+)?(=[^,]+)?(,.*)?$')
+
 def is_quoted(s):
     return s.startswith('"') and s.endswith('"') or s.startswith("'") and s.endswith("'")
+
+class RowFilter:
+    def __init__(self, rows, droprows, key):
+        self.rows = rows
+        self.droprows = droprows
+        self.key = key
+        self.kept = 0
+        self.dropped = 0
+
+    def accept(self, row):
+        keyval = row[self.key]
+        if keyval:
+            if self.rows:
+                self.kept += 1
+                return keyval in self.rows
+            elif self.droprows:
+                self.kept += 1
+                return keyval not in self.droprows
+        self.dropped += 1
+        return False
+    
+class RowHolder:
+    def __init__(self, rows):
+        self.rows = rows
+
+def dict_fields(d, fields):
+    missing_fields = [field for field in fields if field not in d]
+    if missing_fields:
+        print(f'Warning: Missing fields: "{missing_fields}" from object {d}.', file=sys.stderr)
+    return {field: d[field] for field in fields if field in d }    
+
+def join(row_source, join, row_filter, opts):
+    result = RowHolder([])
+    with open(join.filename, mode='r', encoding='utf-8-sig') as join_file:
+        join_reader = csv.DictReader(join_file)
+
+        if not join_reader.fieldnames:
+            print(f'Error: No field names in join file "{join.filename}".', file=sys.stderr)
+            return
+        if not row_source.fieldnames:
+            print(f'Error: No field names in source file.', file=sys.stderr)
+            return
+
+        if not join.columns:            
+            join_columns = [field for field in join_reader.fieldnames if field not in row_source.fieldnames and field != join.key and field != join.fkey]
+        else:
+            missing_columns = [field for field in join.columns if field not in join_reader.fieldnames]
+            if missing_columns:
+                print(f'Error: Missing join columns: "{missing_columns}"', file=sys.stderr)
+                return
+            duplicate_columns = [field for field in join.columns if field in row_source.fieldnames]
+            if duplicate_columns:
+                print(f'Error: Duplicate join columns already present in source: "{duplicate_columns}"', file=sys.stderr)
+                return
+            join_columns = join.columns
+        if opts.verbose:
+            print(f'Info: Join columns: "{join_columns}"', file=sys.stderr)            
+        result.fieldnames = row_source.fieldnames
+        result.fieldnames.extend(join_columns)
+        if opts.verbose:
+            print(f'Info: Resulting columns after join: "{result.fieldnames}"', file=sys.stderr)
+
+        join_dict = {}
+        for row in join_reader:
+            keyval = row[join.fkey]
+            if keyval in join_dict:
+                print(f'Warning: Duplicate key "{keyval}" in join file "{join.filename}".', file=sys.stderr)
+            join_dict[keyval] = row
+
+        blank_updater = {field: '' for field in join_columns}
+        source_row_count = 0
+        missing_join_count = 0
+        join_count = 0
+        for row in row_source:
+            source_row_count += 1
+            if not row_filter or row_filter.accept(row):
+                keyval = row[join.key]
+                if keyval in join_dict:
+                    join_count += 1
+                    row.update(dict_fields(join_dict[keyval], join_columns))
+                else:
+                    missing_join_count += 1
+                    print(f'Warning: Key "{keyval}" not found in join file "{join.filename}".', file=sys.stderr)
+                    row.update(blank_updater)
+                result.rows.append(row)
+        if opts.verbose:
+            print(f'Info: Returning {len(result.rows)} rows. Joined {join_count} of {source_row_count} source rows. {missing_join_count} empty joins.', file=sys.stderr)
+    return result.rows, result.fieldnames
 
 def field_effect(ofile, verbose, fields, dropfields, showfields, fieldnames):
     if showfields:
@@ -61,68 +155,70 @@ def field_effect(ofile, verbose, fields, dropfields, showfields, fieldnames):
 
 def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields, showfields, lines):
     csv_reader = csv.DictReader(csv_file)
-    field_error, resulting_fields = field_effect(ofile, opt.verbose, opt.fields, opt.dropfields, opt.showfields, csv_reader.fieldnames)
-    if field_error or not resulting_fields:
-        return
+    fieldnames = csv_reader.fieldnames
 
+    # Determine the actual key field. Will be used by later steps
     dict_key = opt.key
     if dict_key and isinstance(dict_key, int):
         dict_key_index = dict_key
-        dict_key = csv_reader.fieldnames[dict_key-1]
-        print(f'Info: Interpreting dict_key as field name "{dict_key}" from index {dict_key_index}.', file=sys.stderr)
-    elif dict_key and dict_key not in csv_reader.fieldnames:
+        dict_key = fieldnames[dict_key-1]
+        if opt.verbose:
+            print(f'Info: Interpreting dict_key as field name "{dict_key}" from index {dict_key_index}.', file=sys.stderr)
+    elif dict_key and dict_key not in fieldnames:
         if is_quoted(dict_key):
             dict_key_unqoted = dict_key[1:-1]
-            if dict_key_unqoted in csv_reader.fieldnames:
-                print(f'Info: Interpreting dict_key as quoted <<{dict_key_unqoted}>> from quoted string <<{dict_key}>>.', file=sys.stderr)
+            if dict_key_unqoted in fieldnames:
+                if opt.verbose:
+                    print(f'Info: Interpreting dict_key as quoted <<{dict_key_unqoted}>> from quoted string <<{dict_key}>>.', file=sys.stderr)
                 dict_key = dict_key_unqoted
-        if dict_key and dict_key not in csv_reader.fieldnames:
+        if dict_key and dict_key not in fieldnames:
             print(f'Error: dict_key "{dict_key}" not found in CSV field names.', file=sys.stderr)
             return
+    opt.key = dict_key
 
-    row_source = csv_reader
-    if opt.rows or opt.droprows:
-        row_source = []
-        kept_row_count = 0
-        dropped_row_count = 0
-        for row in csv_reader:
-            if opt.rows:
-                if row[dict_key] in opt.rows:
-                    row_source.append(row)
-                    kept_row_count += 1
-                else:
-                    dropped_row_count += 1
-            elif opt.droprows:
-                if row[dict_key] not in opt.droprows:
-                    row_source.append(row)
-                    kept_row_count += 1
-                else:
-                    dropped_row_count += 1
+    # Process any joins to pick up additional fields that will be used by later steps.
+    # Row filtering will happen now if there are joins, otherwise after field_effect.
+    row_filter = RowFilter(opt.rows, opt.droprows, opt.key) if opt.rows or opt.droprows else None
+    row_source, fieldnames = join(csv_reader, opt.join, row_filter, opt) if opt.join else csv_reader
+
+    field_error, resulting_fields = field_effect(ofile, opt.verbose, opt.fields, opt.dropfields, opt.showfields, fieldnames)
+    if field_error or not resulting_fields:
+        return
+
+    # Do the row filtering now if it wasn't done during the join.    
+    if row_filter and not opt.join:
+        row_source = [row for row in row_source if row_filter.accept(row)]
+
+    # Show the row filter stats if it was used.
+    if row_filter and opt.verbose:
+        print(f'Info: Kept {row_filter.kept} rows and dropped {row_filter.dropped} rows.', file=sys.stderr)
+    if opt.row_order:
+        row_source.sort(key=lambda row: opt.row_order.index(row[dict_key]))
+
+    if opt.template:
         if opt.verbose:
-            print(f'Info: Kept {kept_row_count} rows and dropped {dropped_row_count} rows.', file=sys.stderr)
-        if opt.row_order:
-            row_source.sort(key=lambda row: opt.row_order.index(row[dict_key]))
-
-    if opt.format:
-        template_row = BuducoCvHtml.get_template(opt.format)
+            print(f'Info: Using template "{opt.template}".', file=sys.stderr)
+        template_row = BuducoCvHtml.get_template(opt.template)
         if not template_row:
-            print(f'Error: Unknown format template "{opt.format}".', file=sys.stderr)
+            print(f'Error: Unknown format template "{opt.template}".', file=sys.stderr)
             return
         if opt.html:
-            print(BuducoCvHtml.html_start.format(DocTitle=opt.format), file=ofile)
-        template_start = BuducoCvHtml.get_template_start(opt.format)
+            print(BuducoCvHtml.html_start.format(DocTitle=opt.template), file=ofile)
+        template_start = BuducoCvHtml.get_template_start(opt.template)
         if template_start:
             print(template_start, file=ofile)
         for row in row_source:
-            BuducoCvHtml.fix_dict(row, opt.format)
+            BuducoCvHtml.fix_dict(row, opt.template)
             print(template_row.format_map(row), file=ofile)
-        template_end = BuducoCvHtml.get_template_end(opt.format)
+        template_end = BuducoCvHtml.get_template_end(opt.template)
         if template_end:
             print(template_end, file=ofile)
         if opt.html:
             print(BuducoCvHtml.html_end, file=ofile)
 
     elif opt.lines:
+        if opt.verbose:
+            print(f'Info: Outputting one field per line including fields {resulting_fields}.', file=sys.stderr)
         print (f'Included fields: {resulting_fields}', file=ofile)
         for row in row_source:
             print("===== Start Record:\n", file=ofile)
@@ -152,10 +248,18 @@ def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields,
                     del row[field]
             csv_writer.writerow(row)
 
+def parse_join(join):
+    m = re_join_spec.match(join)
+    filename = m.group(1)
+    key = m.group(2)[1:] if m.group(2) else None
+    fkey = m.group(3)[1:] if m.group(3) else None
+    columns = m.group(4)[1:] if m.group(4) else None
+    return {'filename':filename, 'key':key, 'fkey':fkey, 'columns':columns.split(',') if columns else []} 
+
 def guess_extension(args):
     if args.json:
         return '.json'
-    elif args.html or args.format:
+    elif args.html or args.template:
         return '.html'
     elif args.lines:
         return '.txt'
@@ -182,13 +286,16 @@ def main():
     parser.add_argument('-r', '--rows', nargs='+', help='List of rows to include.')
     parser.add_argument('--row-order', nargs='+', help='List of rows to include in the specified order.')
     parser.add_argument('--droprows', nargs='+', help='List of rows to drop.')
+    parser.add_argument('--join', help='CSV file with additional columns to join. filename[:key[=fkey]][,col,...]. There cannot be commas in the filename or column names.'
+                        ' Specify key if different from -k/--key or -k/key not specified or fkey is different.'
+                        ' Specify fkey if different from key. Optionally specify columns.')
     parser.add_argument('-j', '--json', action='store_true', help='Format the data as a JSON array. If --key is also specified, the data is formatted as a JSON object.')
     parser.add_argument('-p', '--popkey', action='store_true', help='Pop the key from each JSON sub object. Only meaningful with -j/--json and -k/--key')
     parser.add_argument('-k', '--key', help='Which field to use as the key for operations that need a key like --rows or --json.'
                         ' Specify a 1-based integer column index or a field name. If the field name is an integer, wrap the argument in single and double quotes. e.g. \'"1"\'.')
     parser.add_argument('-l', '--lines', action='store_true', help='Output as text, one field per line.')
     parser.add_argument('-v', '--verbose', action='store_true', help='Print verbose output. Includes -s/--showfields.')
-    parser.add_argument('--format', help='Format each row using the specified template')
+    parser.add_argument('--template', help='Format each row using the specified template')
     parser.add_argument('--html', action='store_true', help='Wrap the formatted rows in a complete HTML file.')
     args = parser.parse_args()
 
@@ -208,7 +315,7 @@ def main():
         print("Error: You may not specify both -f/--fields and -d/--dropfields. See --help.", file=sys.stderr)
         args_fail = True
     if not (args.fields or args.dropfields or args.showfields):
-        if args.lines or args.format or args.json or args.rows:
+        if args.lines or args.template or args.json or args.rows:
             args.fields = [':all']
         else:
             print("Error: You must specify at least one of -f/--fields, -d/--dropfields, -s/--showfields, or -r/--rows if the output is still csv. See --help.", file=sys.stderr)
@@ -224,9 +331,8 @@ def main():
     if (args.rows or args.droprows) and not args.key:
         print("Error: You must specify a key with -k/--key when filtering rows with -r/--rows, --row-order or --droprows. See --help.", file=sys.stderr)
         args_fail = True
-    if args.key and not (args.rows or args.droprows or args.json):
-        print("Error: You may not specify -k/--key without also specifying -r/--rows, --droprows, or -j/--json. See --help.", file=sys.stderr)
-        args_fail = True
+    if args.key and not (args.rows or args.droprows or args.json or args.join):
+        print("Warning: You should not specify -k/--key without also specifying -r/--rows, --droprows, or -j/--json, or --join. See --help.", file=sys.stderr)
     if args.popkey and not (args.key and args.json):
         print("Warning: -p/--popkey is only meaningful when both -k/--key and -j/--json are also specified. See --help.", file=sys.stderr)
     if args_fail:
@@ -248,6 +354,20 @@ def main():
             args.key = int(args.key)
             print(f'Info: Interpreting key {args.key} as 1-based column index.', file=sys.stderr)
 
+    if args.join:
+        join_spec = parse_join(args.join)
+        if not join_spec['key']:
+            if not args.key:
+                print(f'Error: You must specify a key either with -k/--key or directly in the join argument when using --join. No key in "{join_spec}".', file=sys.stderr)
+                parser.print_help()
+                return
+            join_spec['key'] = args.key
+        if not join_spec['fkey']:
+            join_spec['fkey'] = join_spec['key']
+        if args.verbose:
+            print(f'Info: Joining with "{join_spec}".', file=sys.stderr)
+        args.join = Join(join_spec['filename'], join_spec['key'], join_spec['fkey'], join_spec['columns'])
+
     input_name = args.input
     if not os.path.isfile(input_name) and not input_name.endswith('.csv') and os.path.isfile(input_name + '.csv'):
         input_name += '.csv'
@@ -261,7 +381,6 @@ def main():
         basename = os.path.splitext(os.path.basename(input_name))[0]
         output_name = output_name.replace('%', basename)
         print(f'Info: Auto replaced % with "{basename}" in "{output_name}".', file=sys.stderr)
-
 
     if output_name and os.path.isfile(output_name) and not args.force_overwrite:
         print(f"Error: Output file '{output_name}' already exists", file=sys.stderr)

@@ -192,6 +192,10 @@ class BuducoCvHtml:
         <td colspan="2">
           {ActivitiesP}</td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+          {highlightsHTML}</td>
+      </tr>
     </table>
 """
     detail_start ="""\

@@ -40,7 +40,7 @@ function star_rating(jqo)
 
 function chartspan(jqo)
 {
-  jqo.sparkline('html', { type: 'line', chartRangeMin: -1, chartRangeMax: 12, width:'80px'});
+  jqo.sparkline('html', { type: 'line', chartRangeMin: 0, chartRangeMax: 11, width:'80px'});
 };
 
 $.fn.starrating = function () {
@@ -59,6 +59,12 @@ $.fn.hide_parent_if_empty = function () {
     return this.each(function () {
       if ($(this).text().trim() == "") { $(this).parent().hide(); }
     });
+}
+
+$.fn.hide_if_empty = function () {
+  return this.each(function () {
+    if ($(this).text().trim() == "") { $(this).hide(); }
+  });
 }
 
 function addPrintCSS(filename) {
@@ -83,6 +89,7 @@ function front_page_load()
   $.fn.sparkline.defaults.common.disableInteraction = true;
   $('.spanchart').chartspan();
   $('.starrating').starrating();
+  $('.no-javascript').hide();
   $('.detail-field-label').css({"font-weight": "bold"});
   $('.detail-field-value').hide_parent_if_empty();
 
@@ -90,6 +97,8 @@ function front_page_load()
   if (urlSearchParams.has('nodetails')) { $('#details-page').hide(); }
   if (urlSearchParams.has('nosummary')) { $('#summary-page').hide(); }
   if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
+  if (urlSearchParams.has('nohighlights')) { $('.detail-highlights').hide(); } else { $('.detail-highlights').hide_if_empty(); }
+
   if (urlSearchParams.has('print')) {
     const params = new Proxy(urlSearchParams, { get: (searchParams, prop) => searchParams.get(prop), });
     if (params.print == "frontpage") {
@@ -98,6 +107,11 @@ function front_page_load()
       $('#summary-page').hide();
       $('#details-page').hide();
       $('.cv-between-pages').hide();
-    } 
+    } else if (params.print == "rowbreak") {
+      unloadCSS("buducocv-print.css");
+      addPrintCSS("buducocv-print-rowbreak.css");
+    } else if (params.print == "nocss") {
+      unloadCSS("buducocv-print.css");
+    }
   }
 }

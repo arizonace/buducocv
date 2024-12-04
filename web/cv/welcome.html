@@ -68,6 +68,12 @@
       </td>
     </tr>
 
+    <tr class="no-javascript">
+      <td colspan="6">
+        <p class="no-javascript">If you only see rows of numbers below instead of spark charts, your browser may not support JavaScript in this context. 
+          Please download a print version from the <a href="download.html">Download</a> page or try a different browser.</p>
+      </td>
+    </tr>
     <tr>
       <td class="competency-name">
         <p>Classic C++</p>
@@ -344,8 +350,8 @@
     <tr class="competency-narrative">
       <td colspan="6">
         <p>
-          While I do not claim to maintain focused expertise in all the above simultaneously, I have a strong inventory of current and refreshable skills and solution finding experience.
-          The table above is my attempt to estimate and depict for each skill my:
+          I have a strong inventory of current and refreshable skills and solution building experience. Various jobs shifted my focus between skills and introduced new ones.
+          The table above depicts my estimates of:
         </p>
         <p class="competency-bullets">
           <span>◇ accumulated experience;</span>
@@ -354,7 +360,7 @@
           <br/>
         </p>
         <p>
-          I look forward to the opportunity to demonstrate my skills, and contribute positively to your organization.
+          I look forward to opportunities to demonstrate my skills, and contribute positively to your organization.
         </p>
       </td>
     </tr>
@@ -760,6 +766,7 @@
   </table>
 
   <div id="details-tables">
+
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
       <tr class="detail-label">
         <td class="detail-label">
@@ -795,6 +802,18 @@
           <p>I used Java, Kotlin, and several AWS technologies (DynamoDB, SQS, Elasticsearch, Lambda, etc.) to develop cloud based services that were part of a very large-scale invoice-processing and accounting application. I used infrastructure-as-code to architect and deploy the service with multi-zone redundancy and data security.</p>
           <p>I was responsible (primary service owner) for the Accounting service for a long time, partly due to my background in accounting. I delivered training sessions and wikis to the team and others on accounting concepts. I worked particularly closely with analysts and participated in workshops with other organizations to analyze their practices and translate their needs into software requirements.</p>
           <p>I contributed to hiring, being involved in over 200 hiring decisions including travel to hiring events, interviews, phone screens, manual code assessments, and assessor training.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="amazon">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I participated in solving all the programming challenges expected in such a large global accounting system including effective terms date, time-zones, spanning accounting periods, discounts, payment scheduling, currency conversion, recoverable and non-recoverable VAT, tax withholding, partial payments and more.</li>
+      <li>Amazon accounting is done indirectly through a fairly complex system of models that map potentially intricate business activities to the also complex chart of accounts. I was involved in both modeling and writing code that did accounting via the models.</li>
+      <li>I designed and implemented a coordinated code and data migration of all services and clients of the application, from Elasticsearch to OpenSearch, that was executed with a minimal read only scheduled downtime.</li>
+      <li>I spearheaded and evangelized the use of Kotlin with the accounting service and within the Teller team because of the more concise way it allowed us to express our most typical basic operations.</li>
+    </ul>
+  </div></td>
       </tr>
     </table>
 
@@ -832,6 +851,35 @@
         <td colspan="2">
           <p>I designed, implemented, and supported enterprise data solutions regarding fixed income securities. I programmed mostly in and for the Unix command line environment, primarily in C++, SQL and Python, along with Fortran, JavaScript, shell languages and many Bloomberg proprietary technologies. I did user interface development, working on several screens in the Bloomberg Terminal, including customer facing screens. Senior Engineers at Bloomberg are expected to be or become competent in any language or technology necessary for all aspects of their projects. I was substantially involved in and responsible for database design and programming, feasibility and technical reviews, coding, all stages of testing, documentation, sign off if required for UX/security/compliance, phased rollout, configuration, and ultimately support. At times I was also in rotation as a support on-call, with the possibility of being somewhat always on-call in exigent circumstances, or if the scheduled on-call was not reachable.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="bb">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I developed and enhanced several applications to collect data about financial instruments (securities) from various instantaneous pricing sources both internal and external to Bloomberg and collate them into files that are delivered to clients.
+        <ul>
+          <li>The data gathering and delivery systems on which I worked, consisted of many instances of many interoperating bits of software across distributed systems. Market driven changes in our product constantly required new applications as well as enhancements to existing ones.</li>
+          <li>I worked under the implicit requirement for space and time efficiency. Bloomberg data files are typically very large, often containing several hundred fields and potentially millions of rows.</li>
+        </ul>
+      </li>
+      <li>I developed and enhanced parts of the "snap-shot" infrastructure that captures market data as of certain critical moments, particularly closing times for major market centers around the world including New York, London, Tokyo, and Australia.
+        <ul>
+          <li>The infrastructure maintains a pipeline of customer requests respecting enforced delays, time embargoes, customer entitlements, customer portfolios, and customer preferences.</li>
+          <li>I also developed and enhanced some of the software to monitor the workflow from customer request to customer retrieval.</li>
+        </ul>
+      </li>
+      <li>I developed and enhanced applications to perform quality control of our data, including day-over-day differential checks and formatting checks.</li>
+      <li>I was the principal software engineer on the project to migrate the product we deliver to the Philadelphia Federal Reserve from an older custom infrastructure into the main Data License infrastructure.
+        <ul>
+          <li>Quality control for this project included format and value comparison of a wide spectra of fields for millions of securities without any metadata. I was able to validate the contents of each field against information derived from the whole file.</li>
+          <li>I was also the principal software engineer in projects to provide the Fed with sample data to answer RFPs for new products under my team's responsibility.</li>
+        </ul>
+      </li>
+      <li>I was one of the key developers on a project migrating several classes of mortgage securities from Bloomberg Generic pricing (BGN) to the more accurate Bloomberg Valuation (BVAL) pricing.</li>
+      <li>I developed functionality to configure and manage customer entitlement to orthogonal categories of both securities and fields. Data gathering programs needed very efficient access to customer entitlement and usage for every piece of data written to a file. Field entitlements vary from one security to the next</li>
+    </ul>
+  </div></td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -867,6 +915,25 @@
       <tr class="detail-activity">
         <td colspan="2">
           <p>I was a key implementer of several successful electronic warfare projects primarily using C++ (regular and CLI), Python, and C#, the revenue for which was in the tens of millions of dollars. I directed and coached the two student interns on my project, and indirectly provided additional mentoring to other student interns. I conceived of and successfully implemented a small hardware project with integrated circuits (ICs) and electronic components.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="gtri">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I developed and enhanced applications to monitor and control communications between devices over a MILSTD1553 serial interface and display real-time visualizations of the traffic.
+        <ul>
+          <li>My object-oriented data model allowed very flexible design and implementation of multiple views of the protocol analysis of each type of packet, ranging from visual depictions of elements in the aircraft dashboard, down to raw data, all the way down to individual bits.</li>
+          <li>I used code structure, self documenting code, and the .Net reflection capabilities of Managed C++ to extract metadata about the meanings of bits and bit sets so that even in hexadecimal and binary raw data views, I show tooltips with interpretive information when the mouse hovers over data.</li>
+          <li>When communicating with devices on the serial bus, the program can act as bus master or slave, it can emulate the aircraft control system, it can capture traffic, it can playback one side of a captured conversation and monitor/capture the other, and it can control playback of PIR and RADAR sensor data captured during real events in real aircraft.</li>
+          <li>I developed and enhanced software to control a PCI card that can capture multi-channel PIR data from the system's optical sensors and can playback recorded sequences to the central processor during testing. This software communicates with the card using PCI FIFO channels mapped to virtual memory addresses.</li>
+        </ul>
+      </li>
+      <li>I designed and developed an AN/APR-39 (Radar Warning System) simulator that could communicate with a physical AN/AAR-47 (Laser Warning System) and emulate and test the protocols for startup, version detection, and control/display integration for aircraft with both systems.</li>
+      <li>I designed, prototyped, and programmed an Arduino based device in a nicely enclosed, externally-powered breadboard package with RS485 over USB connectivity. The device controlled several relays and switches via GPIO including the main power to the test rack. I was assisted in this project by my own interns and an electrical engineering intern. This allowed the test software to control the physical configuration of the test rack, reducing human intervention, improving reliability, and enabling long-running overnight test suites.</li>
+      <li>I Developed auxiliary servers and libraries using C++ and C# along with Python interface classes so the binary applications could interoperate with Python in the test framework.</li>
+    </ul>
+  </div></td>
       </tr>
     </table>
 
@@ -904,6 +971,24 @@
         <td colspan="2">
           <p>I performed a broad range of software development activities including software architecture, visual design, coding, prototyping, technology evaluation, business development, demos, trade shows, training, acceptance testing, and deployment. I coded primarily in C# and Dot Net but also did web, JavaScript, Java, and database programming. I primarily developed code targeted at the television-connected, interactive set-top-box which the user controls via handheld remote. I also developed code for other targets in the integrated platform including IPTV back end servers in the VHO, web servers inside and outside the VHO, and Android. Products included Caller ID and Call Handling, Voicemail, Remote DVR, Mobile-RDVR, Instant Messaging, Weather, Fitness Instruction, Movie listings, Yellow Pages, Facebook, Pandora, Flickr, casual games and others.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="alu">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>Domestic and International Travel. I travelled to Poland, India, Singapore, England and to many cities in the United States for a variety of software lifecycle activities including: customer pre-sales support, demos, installation, user acceptance testing, and industry trade shows, as well as meetings with partners, development teams, and other business units.</li>
+      <li>Software Prototyping and Pre-Sales support. I created several software prototypes and proofs of concept for the set-top-box including a Pandora client using REST and OAuth, an app to browse movies at nearby cinemas, and an Instant Messaging client.</li>
+      <li>I created an Android application to showcase our RDVR, VOD, EPG, video playback and Mediaroom integration at trade shows and client visits.</li>
+      <li>I was a key developer in the architecture and development of one our flagship products which was a mediation layer that among other things, allowed a single Mediaroom instance to be partitioned among multiple service providers via web services using federated authentication along with comprehensive web method authorization.</li>
+      <li>I created an website in ASP.Net to demonstrate the ability to securely log in as one of several different broadcasters and separately manage media, subscribers, channel lineup etc. The website provided fully journaled and audited role-based management of the underlying Mediaroom instance.</li>
+      <li>Development Team Liaison. Most of our development took place outside the USA in distant time zones (primarily Poland and India, and some in England). I acted as a local liaison to the development teams for local managers, customers and deployment teams.</li>
+      <li>I maintained a Mediaroom lab in which I kept recent versions of the software and operating systems in use so I could quickly test reported customer bugs and deployment problems and relay information to the developers and other deployment teams.</li>
+      <li>Deployment. I travelled to customer sites to work directly inside their VHOs (Video Head-end Offices), labs and data centers and with their engineers to deploy and configure our software products.
+        <br /> I installed and configured Windows Server 2008, Windows Server 2008 R2 and Linux on rack servers, blade servers and VMs. I installed and configured SANs, Multi-Path I/O, Database clusters, Windows clusters, Windows domains, Mediaroom servers, and custom software in various network architectures.
+      </li>
+    </ul>
+  </div></td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -939,6 +1024,22 @@
       <tr class="detail-activity">
         <td colspan="2">
           <p>I developed and enhanced prototypes of on-screen, customer-facing, interactive IPTV applications that run directly on the Set-Top-Box. Technologies used include C#, ASP.NET, Oracle, SQL, JavaScript, C++, DirectShow, and the Windows Media SDKs.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="att">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I developed the Preferences section of the U-Verse Weather application, including the database design, database programming, and capacity planning. This section of the application stores the user's home city, favorite cities, and other user specific preferences. I used C#, ASP.Net, Oracle, PL/SQL, and JavaScript with Ajax.</li>
+      <li>As part of a team, I collaborated closely with our information architects and other developers to create solutions that address the challenges of television applications. The key difficulties we mitigated were:
+        <ul>
+          <li>Entering text and navigating a UI with a hand-held remote.</li>
+          <li>Visual display elements that looked acceptable on a wide variety of display technologies and qualities.</li>
+          <li>The user's implicit expectation of the same level of reliability from integrated apps as their television service, much higher than expected from Internet service, or SmartTV apps.</li>
+        </ul>
+      </li>
+    </ul>
+  </div></td>
       </tr>
     </table>
 
@@ -977,6 +1078,20 @@
           <p>Greyhound PackageXpress allows retail customers to ship packages via Greyhound bus lines. Agile developed a J2EE web application to allow ticket agents to accept packages and charge customers for shipment. The ticket agents used workstations attached to a luggage scale, a receipt printer, a regular printer, and a debit card PIN pad, along with other peripherals. My job was to write an Active-X control to allow the web application to communicate with the luggage scale via the parallel port and the debit PIN pad over the serial port.</p>
           <p>The project was an exercise in retrograde and unsupported environments; asynchronous serial and parallel port communications; multi-threaded, semi-persistent COM objects; HTML; and JavaScript.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="agile">
+    <h3 class="highlights">Challenges overcome for this project include:</h3>
+    <ul>
+      <li>A retrograde and unsupported hardware environment. Due to external limitations, the platform was restricted to IE6 on Windows 98 on older computers, with older UARTs. Active-X was the only feasible client side technology available.</li>
+      <li>A retrograde and unsupported development environment. Due to additional limitations, the control could not be pre-installed and had to be configured to auto-install on demand over-the-web with limited user interaction. I developed the control as a single, signed, self-registering, Active-X DLL. The HTML host wrapper declared it via CLSID/GUID with a codebase URL for auto-installation. A signature from a trusted authority allowed for minimally intrusive self installation.</li>
+      <li>The luggage scale's parallel port protocol was asynchronous and extemporaneous. The scale had a non-negligible bounce during which time it continued reporting weight values over the parallel port. I had to make my own determination of the stable weight. The weight displayed on the page was updated but not reported to the backend until it had stabilized. Of course the user could meanwhile be interacting with the page in any way.</li>
+      <li>IE6 hosts Active-X controls strictly in a single-threaded-apartment (STA) where the context and lifetime are tied to the webpage. The control needed to create and manage separate multi-threaded-apartments to create the multiple threads needed to maintain semi-persistent asynchronous communications with the parallel port. The control had to manage its own serialization and synchronization with the main STA, which was tricky because Windows/IE6 has its own separate mechanism for serializing the control's STA.</li>
+      <li>Communicating with the PIN pad was synchronous and more reliable, but navigating the handshaking and security protocols was more complex and time consuming. Testing was limited to a fixed set of predetermined interactions supported by the pad in test mode.</li>
+      <li>I authored the control's documentation in HTML and JavaScript.</li>
+    </ul>
+  </div></td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -1013,6 +1128,10 @@ NextGen Consulting Services provides customer specific solutions in data migrati
       <tr class="detail-activity">
         <td colspan="2">
           <p>I developed custom solutions to help several new customers convert their health care and accounting data from other software formats into NextGen formats. I wrote programs to generate various regulatory reports from customer databases. I programmed extensively in Excel using both macros and VBA, as well DotNet Interop for Microsoft Office using C# and VB.Net. I travelled to client sites to observe workflow, determine requirements, and demonstrate solutions.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+          </td>
       </tr>
     </table>
 
@@ -1052,6 +1171,10 @@ NextGen Consulting Services provides customer specific solutions in data migrati
           <p>I wrote auxiliary processes and services in C# using MSMQ, XML, and Exchange. </p>
           <p>I provided phone support to customers during tax season. In addition to researching software glitches and answering questions about operating the software, I learned the answers to more common tax questions on the job and had access to tax experts for more serious questions.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+          </td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -1087,6 +1210,20 @@ NextGen Consulting Services provides customer specific solutions in data migrati
       <tr class="detail-activity">
         <td colspan="2">
           <p>I worked on several versions of WS_FTP, the most sold FTP client in the world.  In particular, I was responsible for and developed the FTP engine for version 7, which has remained mostly in place to date.  WS_FTP included extensive work in sockets, TCP/IP, FTP, Windows, and C++.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="ipswitch">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>My goal for version 7 was to make my FTP engine the fastest in the world. I achieved that goal against all known products available for comparison.</li>
+      <li>The UI remained instantaneously responsive at all times even while doing things that caused most apps including Finder and Explorer to freeze for several moments. Even back in 2002, on computers with a fraction of a gigabyte of memory, the program comfortably sorted, displayed, and operated on folders with over a million files.</li>
+      <li>To implement a rich modern FTP client, I had to understand and implement many Internet RFCs, and overcome many challenges endemic to the protocol in a modern environment, such as firewalls, encryption, NAT traversal, non-routable addresses, and Port and Passive callbacks.</li>
+      <li>I delved deeply into the Windows SDK; GDI; GUI; shell integration; resource management; internationalization; threading; thunking; algorithms; memory usage; performance; persistence; COM; ATL; SSL; SSH; PKI; digital signatures; key exchange; encryption, and secure sessions.</li>
+      <li>I helped to maintain and administer test environments of FTP and SSH servers on Windows and Linux.</li>
+      <li>As a principal developer, I travelled to and participated in company design and architecture meetings, as well as product feature and strategy meetings.</li>
+    </ul>
+  </div></td>
       </tr>
     </table>
 
@@ -1124,6 +1261,17 @@ NextGen Consulting Services provides customer specific solutions in data migrati
         <td colspan="2">
           <p>Working with information architects and artists, I developed several training applications and websites using ToolBook, HTML, JavaScript, C/C++, Active-X, and Java.  I coded projects for American Airlines, Union Camp, ADP, Bank of America, Fidelity Investments, Los Alamos National Labs (LANL), and others. Development contracts were under strict time and budget constraints. I travelled to and participated in design and strategy meetings.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="gwi">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I created an Active-X control along with a corresponding Netscape plugin and a Java applet that simulated a Sabre® terminal in the web page. It emulated all the usually mapped keys of the terminal along with on-screen status indicators. It allowed the ticket agent the same control of the cursor and tabbing between fields, and allowed interaction with fields other than the correct intended field for the question. It simulated server round-trip updates for both correct and incorrect answers.</li>
+      <li>I created an Active-X control along with a corresponding Netscape plugin and a Java applet that simulated an interactive airline ticket. It displayed a picture of a ticket, with configurable data in the fields. The user could navigate between and choose fields, and edit the contents of fields.</li>
+      <li>I created pixel-perfect sample quizzes for Microsoft Word and Excel using ToolBook. The tests requested the candidate to accomplish tasks using menus and shortcut keys. The tester wanted the candidate to have access to the full menu and all shortcut keys so they would not be prompted to the correct answers by limited choices. I took screenshots of all the menus and submenus in Word and Excel, and simulated the menu system in ToolBook complete with mouse tracking, highlighting, sub-menu popups and keyboard accelerators. I wrote most of the painting code in a C DLL which I called from ToolBook scripts. I was also able to simulate limited functionality of some other features such as cut and paste (of specific text - not arbitrary text) but including full emulation of modifier keys for copy vs move with caret and cursor indication.</li>
+    </ul>
+  </div></td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -1159,6 +1307,10 @@ NextGen Consulting Services provides customer specific solutions in data migrati
       <tr class="detail-activity">
         <td colspan="2">
           <p>I was a team lead on parts of Magellan™, a new Windows based front end to Delta’s reservations system, written in C++ and SQL, and communicating via TPF.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+          </td>
       </tr>
     </table>
 
@@ -1196,6 +1348,20 @@ NextGen Consulting Services provides customer specific solutions in data migrati
         <td colspan="2">
           <p>I engaged in a wide range of activities including user requirements gathering, design, user training, code maintenance, and new development in C++ and SQL. My primary project was on a large integrated accounting suite. In particular I was the key developer on the Inventory Management application and I developed many of the shared DLLs used by other parts of the suite. I received several internal commendations for excellent work.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="frb">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I designed and implemented an efficient program to solve a challenging accounting problem that equitably allocated funds orthogonally and hierarchically between various departments, accounts, and projects without losing or gaining pennies. I was able to do this rapidly and correctly despite previous failed attempts by others because of my strong understanding of data structures and algorithms.</li>
+      <li>I developed a check-printing program that communicated with a secure magnetic ink (MICR) printer via its secure protocol. The program converted and spelled out the dollar amount in words on the check.</li>
+      <li>I developed a code strategy for generating dynamic SQL in situations where the equivalent stored procedures contained too many code paths to be maintainable.</li>
+      <li>I developed a query technique to load and display large result sets achieving apparent sub-second latency for queries that had often taken more than a minute.</li>
+      <li>I developed custom data controls for viewing and quickly scrolling through large result sets. My controls were noticeably much more responsive and efficient than the Windows 3.1 controls available at the time. Using simple animation principles, I based the number of fields in dynamic queries based on how fast the scroll position was changing.</li>
+      <li>I created several custom controls and Window classes that emulated the Windows 95 look and feel in the Windows 3.1 environment, including, buttons, checkboxes, property pages, scrollbars and sliders. This required implementing several features at the Windows SDK level in C, including window message loops, tabs, arrow keys, accelerator keys, navigating between sibling, parent and child windows, mouse handling and capture, hit tests, client area and child window management, and of course painting.</li>
+    </ul>
+  </div></td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -1232,6 +1398,25 @@ NextGen Consulting Services provides customer specific solutions in data migrati
         <td colspan="2">
           <p>I designed and developed client-server applications for customer-service inquiries, and to detect merchant fraud. I was able to meet the very challenging expectation of having the parsed information loaded, indexed and ready for customer service inquiry within an hour of receiving a bulk data file. This would have been impossible without using non-traditional, low-level wizardry. I had regular meetings with customer service and fraud monitoring agents to negotiate requirements and features.  I was able to use VB to rapidly generate the user interfaces, while I used C/C++ to access the forms and perform the business and data model logic.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="nova">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I generated custom formatted reports in C++ using the GDI directly. My reports supported typical modern formatting features such as font styles, pagination, repeated headers, column alignments, row grouping etc.
+        <ul>
+          <li>Such reporting functionality is now typically implemented using controls or libraries such as SSRS or Crystal Reports which I have used in subsequent jobs.</li>
+        </ul>
+      </li>
+      <li>I used efficient data structures and algorithms to analyze large volumes of transaction data to find suspicious events using criteria designed by the fraud monitoring team.
+        <ul>
+          <li>My data analysis identified which criteria were most effective, and discovered new parameters for monitoring.</li>
+          <li>I was able to provide this feedback to the fraud team, and incorporate changes as necessary.</li>
+        </ul>
+      </li>
+    </ul>
+  </div></td>
+      </tr>
     </table>
 
     <table cellspacing="0" cellpadding="0" class="detail-table" width="100%">
@@ -1267,6 +1452,20 @@ NextGen Consulting Services provides customer specific solutions in data migrati
       <tr class="detail-activity">
         <td colspan="2">
           <p>On projects for external clients, my responsibilities included coding, video and audio capture and conversion, and weaving together media, text and hyperlinks into the instructional narrative. I operated and maintained the lab hardware and software. I purchased, installed and tested new technology including sound and video capture cards, video recording devices, video authoring software, multimedia authoring software, input devices, memory and hard drives. We were an early adopter of Intel Indeo and used their hardware and encoders in our projects. I mentored students and provided project and technology demos to clients and visitors. I completed several other small programming projects for clients and for internal use of the HVL. I wrote several utilities to create and operate on bitmapped file formats.</p></td>
+      </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+            <div class="highlights data" id="hvl">
+    <h3 class="highlights">Highlights:</h3>
+    <ul>
+      <li>I was a principal software developer on a 2-screen multimedia kiosk for the Army Research Lab DoD Supercomputing Resource Center which allowed the user to navigate a map of the premises on a computer monitor with a joystick, while viewing a synchronized video walkthrough of the route on an attached video monitor.</li>
+      <li>I was a principal software developer on a hypermedia training system for the City of Atlanta's water treatment plant. The HVL published a paper about this project here: <a href="http://www.sciencedirect.com/science/article/pii/009784939390072H">The development of a hypermedia training system for a water treatment plant</a>.</li>
+      <li>I wrote an application to control a single-frame video recorder to record ray-traced animations that were too detailed to be rendered in real time.</li>
+      <li>I wrote a program to create a video animation from experimental data in a paper published by a department professor about using fractals to visualize convergent series. The professor presented the paper and the video at ACM SIGGRAPH '92 in Anaheim which I also attended courtesy of the math department. I was publicly credited for animating the visualization. The paper is available here: <a href="http://dl.acm.org/citation.cfm?id=100451&CFID=843706001&CFTOKEN=51286743">The use of fractals in visualizing iterative techniques from numerical analysis</a>.</li>
+      <li>I wrote an experimental HyperMedia viewer that navigated between scenes very quickly relative to current technology by saving and reusing the unpacked raster data stored in the device dependent bitmap (DDB) structure that Windows creates when it unpacks a bitmap file.</li>
+      <li>Notably, I worked with innovative hypertext web browsers and authoring systems that existed before the advent of the eventually popular HTML/Internet based World Wide Web.</li>
+    </ul>
+  </div></td>
       </tr>
     </table>
 
@@ -1306,8 +1505,15 @@ NextGen Consulting Services provides customer specific solutions in data migrati
           <p>I was assistant Network Administrator for our Novell Network, and for a time the acting Network Administrator.</p>
           <p>I programmed in Pascal, C, C++, Paradox, batch files and application languages such as WordPerfect to support the test development, statistical, and administrative workflows.</p></td>
       </tr>
+      <tr class="detail-highlights">
+        <td colspan="2">
+          </td>
+      </tr>
     </table>
+
 </div> <!-- details-tables -->
+
 </div> <!-- details-page -->
+
 </body>
 </html>

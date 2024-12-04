@@ -418,6 +418,8 @@ def main():
     parser.add_argument('--repr-out', action='store_true', help='print repr() to stdout')
     parser.add_argument('--html', type=argparse.FileType('w'), help='HTML output file')
     parser.add_argument('--html-out', action='store_true', help='print HTML to stdout')
+    parser.add_argument('--csv', type=argparse.FileType('w'), help='Format output as CSV and output to file.')
+    parser.add_argument('--csv-out', action='store_true', help='Format highlights as CSV and print to stdout')
 
     args = parser.parse_args()
     reader = HighlightsReader(args)
@@ -440,6 +442,12 @@ def main():
     if args.html_out:
         print("\n---===--- HTML output:")
         print(HighlightsHtml.make_cv_highlights(cv_highlights))
+
+    if args.csv:
+        print(HighlightsHtml.make_csv(cv_highlights), file=args.csv)
+    if args.csv_out:
+        print("\n---===--- CSV output:")
+        print(HighlightsHtml.make_csv(cv_highlights))
 
 if __name__ == '__main__':
     main()
