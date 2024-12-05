@@ -31,6 +31,9 @@ The canonical resumé data is stored in text files maintained in source control.
 ```
 
 ## TODO
+- Add the star legend
+- Make the size responsive
+- Add detailed pages or popups for each skill
 - Compile all `welcome.html` from data sources without all the cutting and pasting.
 - `focus` and `sparks` columns need to be dynamically generated and joined rather than being stored in a duplicated, non-canonical fashion.
 - Investigate generating and inserting print media CSS on the fly without using files.

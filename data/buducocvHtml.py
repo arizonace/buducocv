@@ -153,6 +153,11 @@ class BuducoCvHtml:
 """
 
     summary_end ="""\
+      <tr class="summary-label show-hide">
+        <td colspan="3" class="summary-label">
+          <p><button class="show-hide" id="show-details" onclick="toggleDetails()">Show Details</button></p>
+        </td>
+      </tr>
   </tbody>
 </table>
 """

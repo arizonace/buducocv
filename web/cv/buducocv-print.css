@@ -2,25 +2,7 @@
 #  Created: 2024-12-03 17:20-EST */
 
 @media print {
-  .cv-page {
-      clear: both;
-      page-break-before: always;
-  }
-  tr {
-    page-break-inside: avoid;
-  }
   table.detail-table {
     page-break-inside: avoid;
-  }
-
-  @page {
-    size: letter;
-    
-    @bottom-right {
-      margin: 0.1in 0.5in 0.5in 0.1in;
-      content: "Arizona Claude Edwards - Page " counter(page);
-      font-size: 9pt;
-      color: #333;
-    }      
   }
 }

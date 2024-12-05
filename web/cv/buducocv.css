@@ -10,7 +10,6 @@ body {
   color: black;
   font-family: Tahoma,Helvetica,sans-serif;
   width: 6.5in;
-  max-width: 6.5in;
   margin-top: 0.75in;
   margin-left: 0.75in;
   margin-right: 0.75in;
@@ -53,7 +52,7 @@ td
   border-width: 1px 1px 1px 1px;
   border-color: #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0;
   padding: 4px 4px 4px 4px;
-  height: 11px;  
+  height: 11px;
   vertical-align: top;
 }
 
@@ -61,7 +60,7 @@ td
   text-align: center;
   margin-top: 1em;
   font-size: 10pt;
-  background-color: #e3eaed; 
+  background-color: #e3eaed;
 }
 
 #details-page { display: none; }
@@ -83,19 +82,19 @@ td
   border-style: none;
 }
 
-.cv-section-table td p
-{
-  margin: 0 0 0 0;
-}
-
 .cv-section-header
 {
   background-color: #bfbfbf;
   align-content: center;
   font-style: "Negreta,bold";
-  /*font-size: 12pt;*/
   font-weight: bold;
   text-align: center;
+}
+
+.cv-section-header td p
+{
+  margin: 0 0 0 0;
+  width: 100%;
 }
 
 .cv-column-headers td p /* cv-column-headers applied to tr */
@@ -112,8 +111,8 @@ table.cv-top
   align-content: center;
   text-align: center;
   font-size: 12pt;
-  border-style: none; 
-  border-collapse: collapse; 
+  border-style: none;
+  border-collapse: collapse;
 }
 .cv-top td { border-style: none; padding: 1px 1px 1px 1px; }
 .cv-top td p { margin: 0 0 0 0; }
@@ -213,3 +212,5 @@ td.detail-field-label { font-style: italic; padding: 2px 20px 0 0 !important; ma
 div.highlights h3 { margin: 3px 0 3px 0; font-size: 9pt; }
 div.highlights ul { padding-left: 1em; margin-left: 1em; margin-top: 0; }
 div.highlights ul ul { padding-left: 0.75em; }
+
+button.show-hide { font-size: 8pt; display:flex; float:right; }

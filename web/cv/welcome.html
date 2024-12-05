@@ -4,6 +4,7 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
   <title>Arizona Edwards</title>
   <link href="buducocv.css" media="print,screen" rel="stylesheet" type="text/css" />
+  <link href="buducocv-print-rowbreak.css" media="print" rel="stylesheet" type="text/css" />
   <link href="buducocv-print.css" media="print" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="lib/jquery-3.1.1.js"></script>
   <script type="text/javascript" src="lib/jquery.sparkline.js"></script>
@@ -70,7 +71,7 @@
 
     <tr class="no-javascript">
       <td colspan="6">
-        <p class="no-javascript">If you only see rows of numbers below instead of spark charts, your browser may not support JavaScript in this context. 
+        <p class="no-javascript">If you only see rows of numbers below instead of spark charts, your browser may not support JavaScript in this context.
           Please download a print version from the <a href="download.html">Download</a> page or try a different browser.</p>
       </td>
     </tr>
@@ -743,6 +744,11 @@
           <p>Produced standardized tests for the state of Georgia.</p>
         </td>
       </tr>
+      <tr class="summary-label show-hide">
+        <td colspan="3" class="summary-label">
+          <p><button class="show-hide" id="show-details" onclick="toggleDetails()">Show Details</button></p>
+        </td>
+      </tr>
 
     </tbody>
   </table>
@@ -758,8 +764,9 @@
   <table cellspacing="0" cellpadding="0" class="cv-section-table" width="100%">
     <tbody>
       <tr class="cv-section-header">
-        <td colspan="3">
-          <p>Work Experience Details</p>
+        <td colspan="3" style="position: relative;">
+          <button class="show-hide" id="show-highlights" onclick="toggleHighlights()">Show Highlights</button>
+          <p style="position: absolute;">Work Experience Details</p>
         </td>
       </tr>
     </tbody>

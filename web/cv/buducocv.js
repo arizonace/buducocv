@@ -89,6 +89,27 @@ function unloadCSS(filename) {
   }
 }
 
+
+function toggleDetails() {
+  if ($('#show-details').text() == "Hide Details") {
+    $('#details-page').hide();
+    $('#show-details').text("Show Details");
+  } else {
+    $('#details-page').show();
+    $('#show-details').text("Hide Details");
+  }
+}
+
+function toggleHighlights() {
+  if ($('#show-highlights').text() == "Hide Highlights") {
+    $('.detail-highlights').hide();
+    $('#show-highlights').text("Show Highlights");
+    } else {
+    $('.detail-highlights').show_if_not_empty();
+    $('#show-highlights').text("Hide Highlights");
+  }
+}
+
 function front_page_load()
 {
   $.fn.sparkline.defaults.common.disableHiddenCheck = true;
@@ -104,24 +125,25 @@ function front_page_load()
   let showHighlights = showSummary && urlSearchParams.has('highlights');
   let showDetails = showSummary && (showHighlights || urlSearchParams.has('details'));
 
-  if (!showSummary) { 
-    $('#summary-page').hide(); 
+  if (!showSummary) {
+    $('#summary-page').hide();
   } else {
-    if (showDetails) { $('#details-page').show(); }
-    if (showHighlights) { $('.detail-highlights').show_if_not_empty(); }
+    if (showDetails) { $('#details-page').show(); $('#show-details').text("Hide Details"); }
+    if (showHighlights) { $('.detail-highlights').show_if_not_empty(); $('#show-highlights').text("Hide Highlights"); }
   }
   if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
-  
+
   if (urlSearchParams.has('print')) {
     const params = new Proxy(urlSearchParams, { get: (searchParams, prop) => searchParams.get(prop), });
     if (params.print == "frontpage") {
       unloadCSS("buducocv-print.css");
+      unloadCSS("buducocv-print-rowbreak.css");
       addPrintCSS("buducocv-print-frontpage.css");
     } else if (params.print == "rowbreak") {
       unloadCSS("buducocv-print.css");
-      addPrintCSS("buducocv-print-rowbreak.css");
     } else if (params.print == "nocss") {
       unloadCSS("buducocv-print.css");
+      unloadCSS("buducocv-print-rowbreak.css");
     }
   }
 }
