@@ -137,13 +137,13 @@ function front_page_load()
     const params = new Proxy(urlSearchParams, { get: (searchParams, prop) => searchParams.get(prop), });
     if (params.print == "frontpage") {
       unloadCSS("buducocv-print-avoidtablebreak.css");
-      unloadCSS("buducocv-print-avoidrowbreak.css");
+      unloadCSS("buducocv-print.css");
       addPrintCSS("buducocv-print-frontpage.css");
     } else if (params.print == "rowbreak") {
       unloadCSS("buducocv-print-avoidtablebreak.css");
     } else if (params.print == "nocss") {
       unloadCSS("buducocv-print-avoidtablebreak.css");
-      unloadCSS("buducocv-print-avoidrowbreak.css");
+      unloadCSS("buducocv-print.css");
     }
   }
 
