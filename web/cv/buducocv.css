@@ -56,11 +56,26 @@ td
   vertical-align: top;
 }
 
-#download {
+#download-row {
   text-align: center;
   margin-top: 1em;
   font-size: 10pt;
   background-color: #e3eaed;
+  position: relative;
+}
+#download-link {
+  text-align: center;
+}
+
+.print-only { display: none; }
+
+.dates-left {
+  float: left;
+  font-size: 9pt;
+}
+.dates-right {
+  float: right;
+  font-size: 9pt;
 }
 
 #details-page { display: none; }
@@ -86,7 +101,6 @@ td
 {
   background-color: #bfbfbf;
   align-content: center;
-  font-style: "Negreta,bold";
   font-weight: bold;
   text-align: center;
 }
@@ -171,6 +185,21 @@ table.competencies-table {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
 }
+
+table.competency-narrative { border: none; }
+table.competency-narrative td { 
+  border: none; 
+  vertical-align: middle;
+}
+
+table.star-legend { 
+  border-collapse: collapse; 
+  padding: 0; margin: 0;
+  font-size: 8pt;
+}
+.star-legend td { border: none; padding: 0 2px 0 1px; }
+.star-legend td p { margin: 0; padding: 0; }
+tr.highlighted { background-color: yellow; }
 
 .competency-bullets {
   font-weight: bold;

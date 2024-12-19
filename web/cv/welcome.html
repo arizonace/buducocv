@@ -4,8 +4,8 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
   <title>Arizona Edwards</title>
   <link href="buducocv.css" media="print,screen" rel="stylesheet" type="text/css" />
-  <link href="buducocv-print-rowbreak.css" media="print" rel="stylesheet" type="text/css" />
-  <link href="buducocv-print.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="buducocv-print-avoidrowbreak.css" media="print" rel="stylesheet" type="text/css" />
+  <link href="buducocv-print-avoidtablebreak.css" media="print" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="lib/jquery-3.1.1.js"></script>
   <script type="text/javascript" src="lib/jquery.sparkline.js"></script>
   <script type="text/javascript" src="buducocv.js"></script>
@@ -89,7 +89,7 @@
         <p><span class="spanchart">0,3,4,5,6,7,8,9,9,10,11,11,11,11,0,0,10,3,3,3,3,3,7,10,,,,,,,,,</span></p>
       </td>
       <td class="competency-rating">
-        <p><span class="starrating">6</span></p>
+        <p><span class="starrating">5</span></p>
       </td>
       <td class="competency-keywords">
         <p>ATL, MFC, also: FCL, C++/CLI, OWL. etc.</p>
@@ -350,19 +350,49 @@
 
     <tr class="competency-narrative">
       <td colspan="6">
-        <p>
-          I have a strong inventory of current and refreshable skills and solution building experience. Various jobs shifted my focus between skills and introduced new ones.
-          The table above depicts my estimates of:
-        </p>
-        <p class="competency-bullets">
-          <span>◇ accumulated experience;</span>
-          <span>◇ engagement over time;</span>
-          <span>◇ overall self rating.</span>
-          <br/>
-        </p>
-        <p>
-          I look forward to opportunities to demonstrate my skills, and contribute positively to your organization.
-        </p>
+        <table class="competency-narrative" style="padding: 0; margin: 0; border: none;">
+          <tr>
+            <td>
+              <p>
+                I have a strong inventory of current and refreshable skills and solution building experience. Various jobs shifted my focus between skills and introduced new ones.
+                The table above depicts my estimates of:
+              </p>
+              <p class="competency-bullets">
+                <span>◇ accumulated experience;</span>
+                <span>◇ engagement over time;</span>
+                <span>◇ overall self rating.</span>
+                <br/>
+              </p>
+              <p>
+                I look forward to opportunities to demonstrate my skills, and contribute positively to your organization.
+              </p>
+            </td>
+            <td>
+              <table class="star-legend">
+                <tr>
+                  <td><p><span class="starrating">5</span></p></td>
+                  <td>Expert</td>
+                </tr>
+                <tr>
+                  <td><p><span class="starrating">4</span></p></td>
+                  <td>Senior</td>
+                </tr>
+                <tr class="highlighted">
+                  <td><p><span class="starrating">3</span></p></td>
+                  <td><span>Effective</span></td>
+                </tr>
+                <tr>
+                  <td><p><span class="starrating">2</span></p></td>
+                  <td>Junior</td>
+                </tr>
+                <tr>
+                  <td><p><span class="starrating">1</span></p></td>
+                  <td>Familiar</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   </tbody>
@@ -470,7 +500,13 @@
         </p>
       </td>
     </tr>
-    <tr><td colspan="2" id="download"><a href="download.html">Download</a></td></tr>
+    <tr><td colspan="2" id="download-row">
+      <span class="print-only dates-left">Updated:&nbsp;</span>
+      <span class="print-only dates-left">2024-12-19</span>
+      <a href="download.html" id="download-link">Download</a>
+      <span class="print-only dates-right" id="printed-date">2024-12-19</span>
+      <span class="print-only dates-right">Printed:&nbsp;</span>
+    </td></tr>
   </tbody>
 </table>
 

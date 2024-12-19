@@ -5,6 +5,7 @@
   #details-page { display: none; }
   #summary-page { display: none; }
   .cv-between-pages { display: none; }
+  .print-only { display: flex;}
 
   @page {
     size: letter;

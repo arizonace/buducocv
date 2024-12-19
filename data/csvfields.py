@@ -153,6 +153,21 @@ def field_effect(ofile, verbose, fields, dropfields, showfields, fieldnames):
         print (f'Info: Resulting fields{would_be}:"{resulting_fields}"', file=sys.stderr)
     return field_error, resulting_fields
 
+def read_row_source(row_source, opts):
+    islist = isinstance(row_source, list)
+    isDictReader = isinstance(row_source, csv.DictReader)
+    isIter = hasattr(row_source, '__iter__')
+    if opts.verbose:
+        print(f'Info: Expanding rows from object of type "{type(row_source)}"; isList:{islist}, isDictReader:{isDictReader}, isIter:{isIter}.', file=sys.stderr)
+    if islist:
+        if opts.verbose:
+            print(f'Info: Using existing list of rows as is.', file=sys.stderr)
+        return row_source
+    else:
+        if opts.verbose:
+            print(f'Info: Reading rows from non-list row_source.', file=sys.stderr)
+        return [row for row in row_source]
+
 def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields, showfields, lines):
     csv_reader = csv.DictReader(csv_file)
     fieldnames = csv_reader.fieldnames
@@ -179,7 +194,7 @@ def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields,
     # Process any joins to pick up additional fields that will be used by later steps.
     # Row filtering will happen now if there are joins, otherwise after field_effect.
     row_filter = RowFilter(opt.rows, opt.droprows, opt.key) if opt.rows or opt.droprows else None
-    row_source, fieldnames = join(csv_reader, opt.join, row_filter, opt) if opt.join else csv_reader
+    row_source, fieldnames = join(csv_reader, opt.join, row_filter, opt) if opt.join else (csv_reader, fieldnames)
 
     field_error, resulting_fields = field_effect(ofile, opt.verbose, opt.fields, opt.dropfields, opt.showfields, fieldnames)
     if field_error or not resulting_fields:
@@ -202,7 +217,7 @@ def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields,
         if not template_row:
             print(f'Error: Unknown format template "{opt.template}".', file=sys.stderr)
             return
-        if opt.html:
+        if opt.wrap_html:
             print(BuducoCvHtml.html_start.format(DocTitle=opt.template), file=ofile)
         template_start = BuducoCvHtml.get_template_start(opt.template)
         if template_start:
@@ -213,7 +228,7 @@ def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields,
         template_end = BuducoCvHtml.get_template_end(opt.template)
         if template_end:
             print(template_end, file=ofile)
-        if opt.html:
+        if opt.wrap_html:
             print(BuducoCvHtml.html_end, file=ofile)
 
     elif opt.lines:
@@ -227,16 +242,35 @@ def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields,
 
     elif opt.json:
         if dict_key:
+            if opt.popkey:
+                resulting_fields.remove(dict_key)
             jo = {}
-            for row in row:
-                if opt.pop_key:
-                    key = row.pop(dict_key)
-                    jo[key]=row
-                else:
-                    jo[row[dict_key]]=row
+            for row in row_source:
+                keyval = row[dict_key]
+                jo[keyval] = dict_fields(row, resulting_fields)
             json.dump(jo, ofile, indent=4)
         else:
-            json.dump(row_source, ofile, indent=4)
+            ja = [dict_fields(row, resulting_fields) for row in row_source]
+            json.dump(ja, ofile, indent=4)
+
+    elif opt.html_table: 
+        if opt.verbose:
+            print(f'Info: Outputting as unstyled HTML table including fields {resulting_fields}.', file=sys.stderr)
+        if opt.wrap_html:
+            print(BuducoCvHtml.html_start.format(DocTitle=opt.input), file=ofile)
+        print('<table>', file=ofile)
+        print('  <tr>', file=ofile)
+        for field in resulting_fields:
+            print(f'    <th>{field}</th>', file=ofile)
+        print('  </tr>', file=ofile)
+        for row in row_source:
+            print('  <tr>', file=ofile)
+            for field in resulting_fields:
+                print(f'    <td>{row[field]}</td>', file=ofile)
+            print('  </tr>', file=ofile)
+        print('</table>', file=ofile)        
+        if opt.wrap_html:
+            print(BuducoCvHtml.html_end, file=ofile)
 
     else:
         delete_fields = [field for field in csv_reader.fieldnames if field not in resulting_fields]
@@ -259,7 +293,7 @@ def parse_join(join):
 def guess_extension(args):
     if args.json:
         return '.json'
-    elif args.html or args.template:
+    elif args.wrap_html or args.template or args.html_table:
         return '.html'
     elif args.lines:
         return '.txt'
@@ -296,7 +330,9 @@ def main():
     parser.add_argument('-l', '--lines', action='store_true', help='Output as text, one field per line.')
     parser.add_argument('-v', '--verbose', action='store_true', help='Print verbose output. Includes -s/--showfields.')
     parser.add_argument('--template', help='Format each row using the specified template')
-    parser.add_argument('--html', action='store_true', help='Wrap the formatted rows in a complete HTML file.')
+    parser.add_argument('--wrap-html', action='store_true', help='Wrap the formatted rows in a complete HTML file.')
+    parser.add_argument('--html-table', action='store_true', help='Format as an unstyled HTML table.')
+
     args = parser.parse_args()
 
     args_fail = False
@@ -315,7 +351,7 @@ def main():
         print("Error: You may not specify both -f/--fields and -d/--dropfields. See --help.", file=sys.stderr)
         args_fail = True
     if not (args.fields or args.dropfields or args.showfields):
-        if args.lines or args.template or args.json or args.rows:
+        if args.lines or args.template or args.json or args.html_table or args.rows:
             args.fields = [':all']
         else:
             print("Error: You must specify at least one of -f/--fields, -d/--dropfields, -s/--showfields, or -r/--rows if the output is still csv. See --help.", file=sys.stderr)
@@ -337,10 +373,6 @@ def main():
         print("Warning: -p/--popkey is only meaningful when both -k/--key and -j/--json are also specified. See --help.", file=sys.stderr)
     if args_fail:
         parser.print_help()
-        return
-
-    if args.json:
-        print("Sorry: -j/--json is not yet implemented.", file=sys.stderr)
         return
 
     if args.output_nosub:

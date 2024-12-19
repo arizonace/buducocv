@@ -4,6 +4,7 @@
 @media print {
   .cv-between-pages { display: none; }
   .show-hide { display: none !important; }
+  .print-only { display: flex;}
   .cv-page {
       clear: both;
       page-break-before: always;
@@ -17,7 +18,7 @@
 
     @bottom-right {
       margin: 0.1in 0.5in 0.5in 0.1in;
-      content: "Arizona Claude Edwards - Page " counter(page);
+      content: "Arizona Edwards - Page " counter(page) " of " counter(pages);
       font-size: 9pt;
       color: #333;
     }

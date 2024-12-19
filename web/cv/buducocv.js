@@ -3,6 +3,7 @@
 
 var ch_blackstar = '★';
 var ch_whitestar = '☆';
+var no_break = '\u2060'
 function star_rating(jqo)
 {
   try
@@ -27,7 +28,7 @@ function star_rating(jqo)
     if (extrastars > 0)
     {
       redSpan = $(he.parentElement.appendChild(document.createElement('SPAN')));
-      redSpan.text('|' + Array(extrastars+1).join(ch_blackstar));
+      redSpan.text('|' + no_break + Array(extrastars+1).join(ch_blackstar));
       starCss["color"] = "red";
       redSpan.css(starCss);
     }
@@ -88,8 +89,6 @@ function unloadCSS(filename) {
     document.head.removeChild(linkElement);
   }
 }
-
-
 function toggleDetails() {
   if ($('#show-details').text() == "Hide Details") {
     $('#details-page').hide();
@@ -132,18 +131,21 @@ function front_page_load()
     if (showHighlights) { $('.detail-highlights').show_if_not_empty(); $('#show-highlights').text("Hide Highlights"); }
   }
   if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
+  if (urlSearchParams.has('nolegend')) { $('.star-legend').hide(); }
 
   if (urlSearchParams.has('print')) {
     const params = new Proxy(urlSearchParams, { get: (searchParams, prop) => searchParams.get(prop), });
     if (params.print == "frontpage") {
-      unloadCSS("buducocv-print.css");
-      unloadCSS("buducocv-print-rowbreak.css");
+      unloadCSS("buducocv-print-avoidtablebreak.css");
+      unloadCSS("buducocv-print-avoidrowbreak.css");
       addPrintCSS("buducocv-print-frontpage.css");
     } else if (params.print == "rowbreak") {
-      unloadCSS("buducocv-print.css");
+      unloadCSS("buducocv-print-avoidtablebreak.css");
     } else if (params.print == "nocss") {
-      unloadCSS("buducocv-print.css");
-      unloadCSS("buducocv-print-rowbreak.css");
+      unloadCSS("buducocv-print-avoidtablebreak.css");
+      unloadCSS("buducocv-print-avoidrowbreak.css");
     }
   }
+
+  $('#printed-date').text(new Date().toISOString().split('T')[0]);
 }
