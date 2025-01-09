@@ -130,7 +130,7 @@ function front_page_load()
     if (showDetails) { $('#details-page').show(); $('#show-details').text("Hide Details"); }
     if (showHighlights) { $('.detail-highlights').show_if_not_empty(); $('#show-highlights').text("Hide Highlights"); }
   }
-  if (urlSearchParams.has('nodownload')) { $('#download').hide(); }
+  if (urlSearchParams.has('nodownload')) { $('#download-link').hide(); }
   if (urlSearchParams.has('nolegend')) { $('.star-legend').hide(); }
 
   if (urlSearchParams.has('print')) {

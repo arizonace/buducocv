@@ -13,11 +13,26 @@ from OutputWrapper import OutputWrapper
 from buducocvHtml import BuducoCvHtml
 
 Join = namedtuple('Join', ['filename', 'key', 'fkey', 'columns'])
+JoinColumns = namedtuple('JoinColumns', ['columns', 'sourcenames' , 'destnames', 'newnames', 'renames', 'reverse_names'])
 
 re_join_spec = re.compile(r'^([^:=,]+)(:[^=,]+)?(=[^,]+)?(,.*)?$')
 
 def is_quoted(s):
     return s.startswith('"') and s.endswith('"') or s.startswith("'") and s.endswith("'")
+
+class JoinedColumn:
+    def __init__(self, oldname, newname):
+        self.oldname = oldname
+        self.newname = newname
+
+    def __str__(self):
+        if self.oldname == self.newname:
+            return self.oldname
+        else:
+            return f'{self.oldname}={self.newname}'
+    
+    def __repr__(self):
+        return f'{self.oldname}={self.newname}'
 
 class RowFilter:
     def __init__(self, rows, droprows, key):
@@ -52,31 +67,33 @@ def dict_fields(d, fields):
 def join(row_source, join, row_filter, opts):
     result = RowHolder([])
     with open(join.filename, mode='r', encoding='utf-8-sig') as join_file:
-        join_reader = csv.DictReader(join_file)
+        join_reader = csv.DictReader(join_file, delimiter=opts.delimiter)
 
         if not join_reader.fieldnames:
-            print(f'Error: No field names in join file "{join.filename}".', file=sys.stderr)
+            raise Exception(f'Error: No field names in join file "{join.filename}".')
             return
         if not row_source.fieldnames:
-            print(f'Error: No field names in source file.', file=sys.stderr)
+            raise Exception(f'Error: No field names in source file.')
             return
 
-        if not join.columns:            
-            join_columns = [field for field in join_reader.fieldnames if field not in row_source.fieldnames and field != join.key and field != join.fkey]
+        source_columns = join.columns.sourcenames
+        if not source_columns:           
+            source_columns = [field for field in join_reader.fieldnames if field not in row_source.fieldnames and field != join.fkey]
+            dest_columns = source_columns
         else:
-            missing_columns = [field for field in join.columns if field not in join_reader.fieldnames]
+            missing_columns = [field for field in source_columns if field not in join_reader.fieldnames]
             if missing_columns:
-                print(f'Error: Missing join columns: "{missing_columns}"', file=sys.stderr)
+                raise Exception(f'Error: Missing join columns: "{missing_columns}" from {join_reader.fieldnames}.')
                 return
-            duplicate_columns = [field for field in join.columns if field in row_source.fieldnames]
+            dest_columns = join.columns.destnames
+            duplicate_columns = [field for field in dest_columns if field in row_source.fieldnames]
             if duplicate_columns:
-                print(f'Error: Duplicate join columns already present in source: "{duplicate_columns}"', file=sys.stderr)
+                raise Exception(f'Error: Duplicate join columns already present in source: "{duplicate_columns}"')
                 return
-            join_columns = join.columns
         if opts.verbose:
-            print(f'Info: Join columns: "{join_columns}"', file=sys.stderr)            
+            print(f'Info: Join columns: "{join.columns.columns}"', file=sys.stderr)            
         result.fieldnames = row_source.fieldnames
-        result.fieldnames.extend(join_columns)
+        result.fieldnames.extend(dest_columns)
         if opts.verbose:
             print(f'Info: Resulting columns after join: "{result.fieldnames}"', file=sys.stderr)
 
@@ -85,9 +102,9 @@ def join(row_source, join, row_filter, opts):
             keyval = row[join.fkey]
             if keyval in join_dict:
                 print(f'Warning: Duplicate key "{keyval}" in join file "{join.filename}".', file=sys.stderr)
-            join_dict[keyval] = row
+            join_dict[keyval] = {column.newname: row[column.oldname] for column in join.columns.columns}
 
-        blank_updater = {field: '' for field in join_columns}
+        blank_updater = {field: '' for field in dest_columns}
         source_row_count = 0
         missing_join_count = 0
         join_count = 0
@@ -97,7 +114,7 @@ def join(row_source, join, row_filter, opts):
                 keyval = row[join.key]
                 if keyval in join_dict:
                     join_count += 1
-                    row.update(dict_fields(join_dict[keyval], join_columns))
+                    row.update(dict_fields(join_dict[keyval], dest_columns))
                 else:
                     missing_join_count += 1
                     print(f'Warning: Key "{keyval}" not found in join file "{join.filename}".', file=sys.stderr)
@@ -169,7 +186,7 @@ def read_row_source(row_source, opts):
         return [row for row in row_source]
 
 def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields, showfields, lines):
-    csv_reader = csv.DictReader(csv_file)
+    csv_reader = csv.DictReader(csv_file, delimiter=opt.delimiter)
     fieldnames = csv_reader.fieldnames
 
     # Determine the actual key field. Will be used by later steps
@@ -274,7 +291,7 @@ def csv_fields(ofile, csv_file, opt): # verbose, input_name, fields, dropfields,
 
     else:
         delete_fields = [field for field in csv_reader.fieldnames if field not in resulting_fields]
-        csv_writer = csv.DictWriter(ofile, fieldnames=resulting_fields)
+        csv_writer = csv.DictWriter(ofile, fieldnames=resulting_fields, delimiter=opt.delimiter)
         csv_writer.writeheader()
         for row in row_source:
             if delete_fields:
@@ -287,8 +304,31 @@ def parse_join(join):
     filename = m.group(1)
     key = m.group(2)[1:] if m.group(2) else None
     fkey = m.group(3)[1:] if m.group(3) else None
-    columns = m.group(4)[1:] if m.group(4) else None
-    return {'filename':filename, 'key':key, 'fkey':fkey, 'columns':columns.split(',') if columns else []} 
+    columns_spec = m.group(4)[1:] if m.group(4) else ''
+    column_specs = columns_spec.split(',')
+
+    renames = {}
+    reverse_names = {}
+    newnames = []   # the list of new names for only the renamed columns
+    destnames = []  # the list of destination names for all columns
+    sourcenames = [] # the list of source names for all columns
+    columns = []
+    for i, column in enumerate(column_specs):
+        if '=' in column:
+            destname = column.split('=')[1]
+            oldname = column.split('=')[0]
+            newnames.append(destname)
+            renames[oldname] = destname
+            reverse_names[destname] = oldname
+        else:
+            destname = column
+            oldname = column
+        destnames.append(destname)
+        sourcenames.append(oldname)
+        columns.append(JoinedColumn(oldname, destname))
+
+    join_columns = JoinColumns(columns, sourcenames, destnames, newnames, renames, reverse_names)    
+    return {'filename':filename, 'key':key, 'fkey':fkey, 'columns':join_columns} 
 
 def guess_extension(args):
     if args.json:
@@ -309,6 +349,7 @@ def replace_csv_extension(filename, extension):
 def main():
     parser = argparse.ArgumentParser(description='Format CSV files.')
     parser.add_argument('-i', '--input', help='Path to the input CSV file')
+    parser.add_argument('--delimiter', help='CSV delimeter', default=',')
     parser.add_argument('-o', '--output', help='Path to the output file, %% in the name will be replaced with the input file basename'
                         ' while a value of %%.%% will auto generate the entire output filename')
     parser.add_argument('-O', '--output_nosub', help='Path to the output file avoiding %% marker substitution.')
@@ -417,6 +458,9 @@ def main():
     if output_name and os.path.isfile(output_name) and not args.force_overwrite:
         print(f"Error: Output file '{output_name}' already exists", file=sys.stderr)
         return
+
+    if args.delimiter == '\\t':
+        args.delimiter = '\t'
 
     if args.verbose:
         print(f'Info: Extracting CSV fields from "{input_name}"', file=sys.stderr)

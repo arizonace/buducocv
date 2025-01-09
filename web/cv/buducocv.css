@@ -224,6 +224,10 @@ td.summary-timeframe p { text-align: right; }
 td.summary-did { width: 459px; }
 td.summary-did p { text-align: justify; }
 
+tr.concise-did { background-color: #ffffff; height: 2.5em;}
+td.concise-did { width: 459px; }
+td.concise-did p { text-align: justify; margin: 0px 0px 8px 0px; }
+
 table.detail-table {
   border-collapse: collapse;
   margin: 2em 0 0 0;
