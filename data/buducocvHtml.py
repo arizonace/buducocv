@@ -90,6 +90,7 @@ class BuducoCvHtml:
         </p>
         <p>
           I look forward to the opportunity to demonstrate my skills, and contribute positively to your organization.
+          <small><sup>*</sup>Combined over time.</small>
         </p>
       </td>
     </tr>
